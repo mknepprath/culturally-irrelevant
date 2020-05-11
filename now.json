@@ -1,0 +1,5 @@
+{
+  "env": {
+    "AIRTABLE_ACCESS_KEY": "@airtable-access-key"
+  }
+}
