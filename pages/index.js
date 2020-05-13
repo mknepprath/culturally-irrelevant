@@ -1,16 +1,23 @@
 import Head from "next/head";
 import classnames from "classnames";
+import { Formik } from "formik";
+import { Dialog, DialogOverlay } from "@reach/dialog";
+import VisuallyHidden from "@reach/visually-hidden";
 import useSWR from "swr";
 
 import fetch from "../libs/fetch";
 
 export default function Home() {
-  const { data, error } = useSWR("/api/airtable", fetch);
+  const [showDialog, setShowDialog] = React.useState(false);
+  const open = () => setShowDialog(true);
+  const close = () => setShowDialog(false);
 
+  const { data: recommendations, error } = useSWR(
+    "/api/recommendations",
+    fetch
+  );
   if (error) return <div>failed to load</div>;
-  if (!data) return <div>loading...</div>;
-
-  const recommendations = data.reverse();
+  if (!recommendations) return <div>loading...</div>;
 
   return (
     <div className="container">
@@ -25,8 +32,13 @@ export default function Home() {
         <h1 className="title">Recommendation Board</h1>
 
         <p className="description">
-          For learning, teaching, sharing and remembering.
+          Hello and welcome to Culturally Irrelevant! This website is based on a
+          podcast where four friends shared and discussed the unseen, unplayed,
+          unread, and all-around overlooked in movies, video games, comic books
+          and whatever else they could come up with.
         </p>
+
+        {/* For learning, teaching, sharing and remembering. */}
 
         <div className="grid">
           {recommendations.map((r) => (
@@ -37,11 +49,20 @@ export default function Home() {
             >
               <h3>
                 {r.Recommendation}
-                {r.Year && ` (${r.Year})`}
+
+                {r.Year && ` (${r.Year} ${r.Medium})`}
               </h3>
               <p>
-                {r.Message} - {r.Name}
+                {r.Message && `"${r.Message}"`}
+                <em> - {r.Name}</em>
               </p>
+
+              {r.Clip ? (
+                <audio className="audio" controls src={r.Clip[0].url}>
+                  Your browser does not support the
+                  <code>audio</code> element.
+                </audio>
+              ) : null}
             </a>
           ))}
         </div>
@@ -58,36 +79,213 @@ export default function Home() {
         </a>
       </footer>
 
-      <div className="fab">Submit a Recommendation</div>
+      <DialogOverlay
+        style={{ background: "hsla(0, 100%, 100%, 0.9)" }}
+        isOpen={showDialog}
+        onDismiss={close}
+      >
+        <Dialog
+          aria-label="Form for submitting a recommendation"
+          isOpen={showDialog}
+          onDismiss={close}
+          style={{ borderRadius: 10, border: "4px solid #000000" }}
+        >
+          <button className="button-close pull-right" onClick={close}>
+            <VisuallyHidden>Close</VisuallyHidden>
+            <span aria-hidden>×</span>
+          </button>
+
+          <h2>Submit a Recommendation</h2>
+          <p>
+            Please share your favorite unseen, unplayed, unread, and all-around
+            overlooked in movies, video games, comic books, etc!{" "}
+          </p>
+
+          <Formik
+            initialValues={{
+              name: "",
+              recommendation: "",
+              year: "",
+              medium: "",
+              message: "",
+            }}
+            onSubmit={(values, { resetForm, setSubmitting }) => {
+              fetch("api/recommendation", {
+                method: "POST",
+                body: JSON.stringify(values),
+              }).then((response) => {
+                resetForm();
+                setSubmitting(false);
+                alert(
+                  `Thank you for submitting ${response[0].fields.Recommendation}! It will be reviewed shortly.`
+                );
+                close();
+              });
+            }}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleChange,
+              handleBlur,
+              handleSubmit,
+              isSubmitting,
+              /* and other goodies */
+            }) => (
+              <form onSubmit={handleSubmit}>
+                <label htmlFor="recommendation">Recommendation</label>
+                <input
+                  maxLength="48"
+                  name="recommendation"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.recommendation}
+                />
+                {errors.recommendation &&
+                  touched.recommendation &&
+                  errors.recommendation}
+
+                <label htmlFor="year">Year</label>
+                <input
+                  maxLength="16"
+                  name="year"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.year}
+                />
+                {errors.year && touched.year && errors.year}
+
+                <label htmlFor="medium">Medium</label>
+                <input
+                  maxLength="32"
+                  name="medium"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.medium}
+                />
+                {errors.medium && touched.medium && errors.medium}
+
+                <label htmlFor="name">Your Name</label>
+                <input
+                  maxLength="32"
+                  name="name"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.name}
+                />
+                {errors.name && touched.name && errors.name}
+
+                <label htmlFor="message">Message</label>
+                <textarea
+                  maxLength="140"
+                  name="message"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.message}
+                />
+                {errors.message && touched.message && errors.message}
+
+                <button
+                  className="button"
+                  disabled={isSubmitting}
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+            )}
+          </Formik>
+        </Dialog>
+      </DialogOverlay>
+
+      <button className="fab button" onClick={open}>
+        Submit a Recommendation
+      </button>
 
       <style jsx>{`
         .fab {
           position: fixed;
           bottom: 32px;
           right: 32px;
-          cursor: pointer;
+        }
+
+        .button {
           background-color: #ffffff;
           border: 4px solid #000000;
           border-radius: 10px;
-          padding: 1.5rem;
-          transition: color 0.15s ease, border-color 0.15s ease,
-            box-shadow 0.15s ease, transform 0.15s ease;
+          box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
+          cursor: pointer;
+          font-size: 1rem;
+          font-weight: 500;
+          padding: 0.75rem;
+          transition: 0.15s ease;
         }
-
-        .fab:hover,
-        .fab:focus,
-        .fab:active {
+        .button:hover,
+        .button:focus,
+        .button:active {
+          background-color: #ffe234;
           box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
           transform: translate(0, -2px);
         }
 
+        .button-close {
+          border: none;
+          cursor: pointer;
+          font-size: 3rem;
+          font-weight: 500;
+          line-height: 0.8rem;
+          transition: 0.15s ease;
+        }
+        .button-close:hover,
+        .button-close:focus,
+        .button-close:active {
+          color: #a90116;
+          transform: translate(0, -2px);
+        }
+
+        label,
+        input,
+        textarea {
+          display: block;
+        }
+
+        label {
+          margin-bottom: 4px;
+        }
+
+        input,
+        textarea {
+          border: 4px solid #000000;
+          border-radius: 10px;
+          box-sizing: border-box;
+          padding: 8px;
+          font-size: 1rem;
+          width: 100%;
+          max-width: 100%;
+          margin-bottom: 8px;
+        }
+
+        h2 {
+          margin-top: 0;
+        }
+
+        .pull-right {
+          float: right;
+        }
+
         .container {
           min-height: 100vh;
-          padding: 0 0.5rem;
+          padding: 0 1rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+        }
+        @media (min-width: 600px) {
+          .container {
+            padding: 0 0.5rem;
+          }
         }
 
         main {
@@ -97,6 +295,7 @@ export default function Home() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          max-width: 800px;
         }
 
         footer {
@@ -126,10 +325,10 @@ export default function Home() {
         .ci-logo {
           background-color: #a90117;
           border-radius: 10px;
-          height: 300px;
-          margin-bottom: 40px;
+          height: 288px;
+          margin-bottom: 48px;
           object-fit: contain;
-          width: 300px;
+          width: 288px;
         }
 
         .title a {
@@ -146,7 +345,14 @@ export default function Home() {
         .title {
           margin: 0;
           line-height: 1.15;
-          font-size: 4rem;
+          font-size: 1.6rem;
+        }
+        @media (min-width: 600px) {
+          .title {
+            margin: 0;
+            line-height: 1.15;
+            font-size: 4rem;
+          }
         }
 
         .title,
@@ -155,8 +361,14 @@ export default function Home() {
         }
 
         .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
+          line-height: 1.2;
+          font-size: 1.2rem;
+        }
+        @media (min-width: 600px) {
+          .description {
+            line-height: 1.4;
+            font-size: 1.5rem;
+          }
         }
 
         code {
@@ -173,7 +385,6 @@ export default function Home() {
           gap: 0.5rem;
           grid-template-columns: 1fr;
 
-          max-width: 800px;
           margin-top: 3rem;
         }
 
@@ -192,7 +403,7 @@ export default function Home() {
 
         .card.official {
           background-color: #a90117;
-          border: none;
+          border: 4px solid #a90117;
           color: #ffffff;
         }
 
@@ -220,13 +431,18 @@ export default function Home() {
         .card.official:hover h3,
         .card.official:focus h3,
         .card.official:active h3 {
-          text-shadow: 0 4px 0 rgba(0, 0, 0, 1);
+          text-shadow: 0 0.15rem 0 rgba(0, 0, 0, 1);
         }
 
         .card p {
           margin: 0;
           font-size: 1.25rem;
           line-height: 1.5;
+        }
+
+        .audio {
+          margin-top: 1rem;
+          width: 100%;
         }
 
         .logo {

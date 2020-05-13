@@ -12,6 +12,7 @@ export default async (req, res) => {
 
   base("Recommendations")
     .select({
+      filterByFormula: "NOT({Publish} = '')",
       view: "Grid view",
     })
     .eachPage(
@@ -20,7 +21,7 @@ export default async (req, res) => {
         records.forEach((record) => {
           const { fields } = record;
           const name = record.get("Name");
-          posts.push({ id: record.id, name, ...fields });
+          posts.unshift({ id: record.id, name, ...fields });
         });
 
         // If there are more records, this will get called again.
