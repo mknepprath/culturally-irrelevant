@@ -1,50 +1,49 @@
-import Head from 'next/head'
+import Head from "next/head";
+import classnames from "classnames";
+import useSWR from "swr";
+
+import fetch from "../libs/fetch";
 
 export default function Home() {
+  const { data, error } = useSWR("/api/airtable", fetch);
+
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div>loading...</div>;
+
+  const recommendations = data.reverse();
+
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Culturally Irrelevant - Recommendations Board</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main>
-        <h1 className="title">
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+        <img className="ci-logo" src="/logo.png" />
+
+        <h1 className="title">Recommendation Board</h1>
 
         <p className="description">
-          Get started by editing <code>pages/index.js</code>
+          For learning, teaching, sharing and remembering.
         </p>
 
         <div className="grid">
-          <a href="https://nextjs.org/docs" className="card">
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className="card">
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/zeit/next.js/tree/master/examples"
-            className="card"
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="card"
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+          {recommendations.map((r) => (
+            <a
+              key={r.id}
+              href={r.URL}
+              className={classnames("card", { official: r.Official })}
+            >
+              <h3>
+                {r.Recommendation}
+                {r.Year && ` (${r.Year})`}
+              </h3>
+              <p>
+                {r.Message} - {r.Name}
+              </p>
+            </a>
+          ))}
         </div>
       </main>
 
@@ -54,12 +53,34 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
         </a>
       </footer>
 
+      <div className="fab">Submit a Recommendation</div>
+
       <style jsx>{`
+        .fab {
+          position: fixed;
+          bottom: 32px;
+          right: 32px;
+          cursor: pointer;
+          background-color: #ffffff;
+          border: 4px solid #000000;
+          border-radius: 10px;
+          padding: 1.5rem;
+          transition: color 0.15s ease, border-color 0.15s ease,
+            box-shadow 0.15s ease, transform 0.15s ease;
+        }
+
+        .fab:hover,
+        .fab:focus,
+        .fab:active {
+          box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+          transform: translate(0, -2px);
+        }
+
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -102,6 +123,15 @@ export default function Home() {
           text-decoration: none;
         }
 
+        .ci-logo {
+          background-color: #a90117;
+          border-radius: 10px;
+          height: 300px;
+          margin-bottom: 40px;
+          object-fit: contain;
+          width: 300px;
+        }
+
         .title a {
           color: #0070f3;
           text-decoration: none;
@@ -139,37 +169,58 @@ export default function Home() {
         }
 
         .grid {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex-wrap: wrap;
+          display: grid;
+          gap: 0.5rem;
+          grid-template-columns: 1fr;
 
           max-width: 800px;
           margin-top: 3rem;
         }
 
         .card {
-          margin: 1rem;
-          flex-basis: 45%;
+          box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
+          transform: translate(0, 0);
           padding: 1.5rem;
           text-align: left;
           color: inherit;
           text-decoration: none;
-          border: 1px solid #eaeaea;
+          border: 4px solid #000000;
           border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
+          transition: color 0.15s ease, border-color 0.15s ease,
+            box-shadow 0.15s ease, transform 0.15s ease;
+        }
+
+        .card.official {
+          background-color: #a90117;
+          border: none;
+          color: #ffffff;
         }
 
         .card:hover,
         .card:focus,
         .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
+          box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+          transform: translate(0, -2px);
         }
 
         .card h3 {
           margin: 0 0 1rem 0;
           font-size: 1.5rem;
+
+          text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+          transition: transform 0.15s ease;
+        }
+
+        .card:hover h3,
+        .card:focus h3,
+        .card:active h3 {
+          transform: rotate(-2deg) scale(1.1) translate(10px, 0);
+        }
+
+        .card.official:hover h3,
+        .card.official:focus h3,
+        .card.official:active h3 {
+          text-shadow: 0 4px 0 rgba(0, 0, 0, 1);
         }
 
         .card p {
@@ -182,10 +233,10 @@ export default function Home() {
           height: 1em;
         }
 
-        @media (max-width: 600px) {
+        @media (min-width: 600px) {
           .grid {
-            width: 100%;
-            flex-direction: column;
+            gap: 24px;
+            grid-template-columns: 1fr 1fr;
           }
         }
       `}</style>
@@ -205,5 +256,5 @@ export default function Home() {
         }
       `}</style>
     </div>
-  )
+  );
 }

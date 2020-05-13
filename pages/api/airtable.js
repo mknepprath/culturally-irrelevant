@@ -1,4 +1,3 @@
-import fetch from "isomorphic-unfetch";
 import Airtable from "airtable";
 
 Airtable.configure({
@@ -13,18 +12,15 @@ export default async (req, res) => {
 
   base("Recommendations")
     .select({
-      // Selecting the first 10 records in Grid view:
-      maxRecords: 10,
       view: "Grid view",
     })
     .eachPage(
       (records, fetchNextPage) => {
         // This function will get called for each page of records.
         records.forEach((record) => {
+          const { fields } = record;
           const name = record.get("Name");
-          const recommendation = record.get("Recommendation");
-
-          posts.push({ name, recommendation });
+          posts.push({ id: record.id, name, ...fields });
         });
 
         // If there are more records, this will get called again.
