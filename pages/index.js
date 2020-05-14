@@ -1,16 +1,19 @@
 import Head from "next/head";
 import classnames from "classnames";
-import { Formik } from "formik";
 import { Dialog, DialogOverlay } from "@reach/dialog";
 import VisuallyHidden from "@reach/visually-hidden";
 import useSWR from "swr";
+
+import Form from "../components/form";
 
 import fetch from "../libs/fetch";
 
 export default function Home() {
   const [showDialog, setShowDialog] = React.useState(false);
   const open = () => setShowDialog(true);
-  const close = () => setShowDialog(false);
+  const close = () => {
+    setShowDialog(false);
+  };
 
   const { data: recommendations, error } = useSWR(
     "/api/recommendations",
@@ -37,6 +40,10 @@ export default function Home() {
           unread, and all-around overlooked in movies, video games, comic books
           and whatever else they could come up with.
         </p>
+
+        <a className="button-recommend" href="/recommend">
+          <button className="button">Submit a Recommendation</button>
+        </a>
 
         {/* For learning, teaching, sharing and remembering. */}
 
@@ -68,16 +75,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <img src="/vercel.svg" alt="Vercel Logo" className="logo" />
-        </a>
-      </footer>
+      <footer>Built with ♥ by Michael Knepprath</footer>
 
       <DialogOverlay
         style={{ background: "hsla(0, 100%, 100%, 0.9)" }}
@@ -101,101 +99,7 @@ export default function Home() {
             overlooked in movies, video games, comic books, etc!{" "}
           </p>
 
-          <Formik
-            initialValues={{
-              name: "",
-              recommendation: "",
-              year: "",
-              medium: "",
-              message: "",
-            }}
-            onSubmit={(values, { resetForm, setSubmitting }) => {
-              fetch("api/recommendation", {
-                method: "POST",
-                body: JSON.stringify(values),
-              }).then((response) => {
-                resetForm();
-                setSubmitting(false);
-                alert(
-                  `Thank you for submitting ${response[0].fields.Recommendation}! It will be reviewed shortly.`
-                );
-                close();
-              });
-            }}
-          >
-            {({
-              values,
-              errors,
-              touched,
-              handleChange,
-              handleBlur,
-              handleSubmit,
-              isSubmitting,
-              /* and other goodies */
-            }) => (
-              <form onSubmit={handleSubmit}>
-                <label htmlFor="recommendation">Recommendation</label>
-                <input
-                  maxLength="48"
-                  name="recommendation"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.recommendation}
-                />
-                {errors.recommendation &&
-                  touched.recommendation &&
-                  errors.recommendation}
-
-                <label htmlFor="year">Year</label>
-                <input
-                  maxLength="16"
-                  name="year"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.year}
-                />
-                {errors.year && touched.year && errors.year}
-
-                <label htmlFor="medium">Medium</label>
-                <input
-                  maxLength="32"
-                  name="medium"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.medium}
-                />
-                {errors.medium && touched.medium && errors.medium}
-
-                <label htmlFor="name">Your Name</label>
-                <input
-                  maxLength="32"
-                  name="name"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.name}
-                />
-                {errors.name && touched.name && errors.name}
-
-                <label htmlFor="message">Message</label>
-                <textarea
-                  maxLength="140"
-                  name="message"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.message}
-                />
-                {errors.message && touched.message && errors.message}
-
-                <button
-                  className="button"
-                  disabled={isSubmitting}
-                  type="submit"
-                >
-                  Submit
-                </button>
-              </form>
-            )}
-          </Formik>
+          <Form />
         </Dialog>
       </DialogOverlay>
 
@@ -205,9 +109,24 @@ export default function Home() {
 
       <style jsx>{`
         .fab {
+          display: none;
           position: fixed;
           bottom: 32px;
           right: 32px;
+        }
+        @media (min-width: 600px) {
+          .fab {
+            display: block;
+          }
+        }
+
+        .button-recommend {
+          display: block;
+        }
+        @media (min-width: 600px) {
+          .button-recommend {
+            display: none;
+          }
         }
 
         .button {
@@ -244,32 +163,6 @@ export default function Home() {
           transform: translate(0, -2px);
         }
 
-        label,
-        input,
-        textarea {
-          display: block;
-        }
-
-        label {
-          margin-bottom: 4px;
-        }
-
-        input,
-        textarea {
-          border: 4px solid #000000;
-          border-radius: 10px;
-          box-sizing: border-box;
-          padding: 8px;
-          font-size: 1rem;
-          width: 100%;
-          max-width: 100%;
-          margin-bottom: 8px;
-        }
-
-        h2 {
-          margin-top: 0;
-        }
-
         .pull-right {
           float: right;
         }
@@ -289,13 +182,18 @@ export default function Home() {
         }
 
         main {
-          padding: 5rem 0;
+          padding: 2rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           max-width: 800px;
+        }
+        @media (min-width: 600px) {
+          main {
+            padding: 5rem 0;
+          }
         }
 
         footer {
@@ -349,8 +247,6 @@ export default function Home() {
         }
         @media (min-width: 600px) {
           .title {
-            margin: 0;
-            line-height: 1.15;
             font-size: 4rem;
           }
         }
@@ -382,7 +278,7 @@ export default function Home() {
 
         .grid {
           display: grid;
-          gap: 0.5rem;
+          gap: 1rem;
           grid-template-columns: 1fr;
 
           margin-top: 3rem;
@@ -451,7 +347,7 @@ export default function Home() {
 
         @media (min-width: 600px) {
           .grid {
-            gap: 24px;
+            gap: 1.5rem;
             grid-template-columns: 1fr 1fr;
           }
         }
