@@ -59,6 +59,8 @@ export default function Home() {
               <a
                 key={r.id}
                 href={r.URL}
+                rel="noopener noreferrer"
+                target="_blank"
                 className={classnames("card", { official: r.Official })}
               >
                 <h3>
