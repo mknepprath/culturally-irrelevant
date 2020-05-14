@@ -190,7 +190,7 @@ export default function Home() {
         }
 
         main {
-          padding: 2rem 0;
+          padding: 3rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
