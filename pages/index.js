@@ -19,8 +19,6 @@ export default function Home() {
     "/api/recommendations",
     fetch
   );
-  if (error) return <div>failed to load</div>;
-  if (!recommendations) return <div>loading...</div>;
 
   return (
     <div className="container">
@@ -47,32 +45,42 @@ export default function Home() {
 
         {/* For learning, teaching, sharing and remembering. */}
 
-        <div className="grid">
-          {recommendations.map((r) => (
-            <a
-              key={r.id}
-              href={r.URL}
-              className={classnames("card", { official: r.Official })}
-            >
-              <h3>
-                {r.Recommendation}
+        {error ? (
+          <div className="card error grid">Failed to load recommendations</div>
+        ) : null}
 
-                {r.Year && ` (${r.Year} ${r.Medium})`}
-              </h3>
-              <p>
-                {r.Message && `"${r.Message}"`}
-                <em> - {r.Name}</em>
-              </p>
+        {!recommendations && !error ? (
+          <div className="card grid">Loading...</div>
+        ) : null}
 
-              {r.Clip ? (
-                <audio className="audio" controls src={r.Clip[0].url}>
-                  Your browser does not support the
-                  <code>audio</code> element.
-                </audio>
-              ) : null}
-            </a>
-          ))}
-        </div>
+        {recommendations && !error ? (
+          <div className="grid">
+            {recommendations.map((r) => (
+              <a
+                key={r.id}
+                href={r.URL}
+                className={classnames("card", { official: r.Official })}
+              >
+                <h3>
+                  {r.Recommendation}
+
+                  {r.Year && ` (${r.Year} ${r.Medium})`}
+                </h3>
+                <p>
+                  {r.Message && `"${r.Message}"`}
+                  <em> - {r.Name}</em>
+                </p>
+
+                {r.Clip ? (
+                  <audio className="audio" controls src={r.Clip[0].url}>
+                    Your browser does not support the
+                    <code>audio</code> element.
+                  </audio>
+                ) : null}
+              </a>
+            ))}
+          </div>
+        ) : null}
       </main>
 
       <footer>Built with ♥ by Michael Knepprath</footer>
@@ -334,6 +342,11 @@ export default function Home() {
           margin: 0;
           font-size: 1.25rem;
           line-height: 1.5;
+        }
+
+        .error {
+          background-color: #a90116;
+          color: #ffffff;
         }
 
         .audio {
