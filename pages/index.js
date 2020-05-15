@@ -65,8 +65,8 @@ export default function Home() {
               >
                 <h3>
                   {r.Recommendation}
-
                   {r.Year && ` (${r.Year} ${r.Medium})`}
+                  {r.URL && <span className="external-link"> ↗</span>}
                 </h3>
                 <p>
                   {r.Message && `"${r.Message}"`}
@@ -352,6 +352,21 @@ export default function Home() {
           margin: 0;
           font-size: 1.25rem;
           line-height: 1.5;
+        }
+
+        .card .external-link {
+          opacity: 1;
+          transition: opacity 0.15s ease;
+        }
+        .card:hover .external-link,
+        .card:focus .external-link,
+        .card:active .external-link {
+          opacity: 1;
+        }
+        @media (min-width: 600px) {
+          .card .external-link {
+            opacity: 0;
+          }
         }
 
         .error {
