@@ -74,7 +74,15 @@ export default function Home() {
                 </p>
 
                 {r.Clip ? (
-                  <audio className="audio" controls src={r.Clip[0].url}>
+                  <audio
+                    className="audio"
+                    controls
+                    // https://github.com/mknepprath/culturally-irrelevant/issues/3
+                    // In Safari, clicking the play button also opens the containing link.
+                    // This prevents event bubbling so that doesn't happen.
+                    onClick={(event) => event.preventDefault()}
+                    src={r.Clip[0].url}
+                  >
                     Your browser does not support the
                     <code>audio</code> element.
                   </audio>
