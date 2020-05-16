@@ -11,9 +11,7 @@ import fetch from "../libs/fetch";
 export default function Home() {
   const [showDialog, setShowDialog] = React.useState(false);
   const open = () => setShowDialog(true);
-  const close = () => {
-    setShowDialog(false);
-  };
+  const close = () => setShowDialog(false);
 
   const { data: recommendations, error } = useSWR(
     "/api/recommendations",
