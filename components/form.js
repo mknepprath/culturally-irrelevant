@@ -65,6 +65,7 @@ export default function Form() {
               name="medium"
               onChange={handleChange}
               onBlur={handleBlur}
+              placeholder="Film, Book, Series..."
               value={values.medium}
             />
             {errors.medium && touched.medium && errors.medium}
