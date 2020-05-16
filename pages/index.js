@@ -66,10 +66,6 @@ export default function Home() {
                   {r.Year && ` (${r.Year} ${r.Medium})`}
                   {r.URL && <span className="external-link"> ↗</span>}
                 </h3>
-                <p>
-                  {r.Message && `"${r.Message}"`}
-                  <em> - {r.Name}</em>
-                </p>
 
                 {r.Clip ? (
                   <audio
@@ -85,6 +81,11 @@ export default function Home() {
                     <code>audio</code> element.
                   </audio>
                 ) : null}
+
+                <p>
+                  {r.Message && `"${r.Message}"`}
+                  <em> - {r.Name}</em>
+                </p>
               </a>
             ))}
           </div>
