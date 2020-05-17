@@ -37,6 +37,10 @@ export default function Home() {
           and whatever else they could come up with.
         </p>
 
+        <p className="description">
+          Please share your recommendations with us!
+        </p>
+
         <a className="button-recommend" href="/recommend">
           <button className="button">Submit a Recommendation</button>
         </a>
