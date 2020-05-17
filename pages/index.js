@@ -5,8 +5,9 @@ import VisuallyHidden from "@reach/visually-hidden";
 import useSWR from "swr";
 
 import Form from "../components/form";
+import Player from "../components/player";
 
-import fetch from "../libs/fetch";
+import fetcher from "../libs/fetch";
 
 export default function Home() {
   const [showDialog, setShowDialog] = React.useState(false);
@@ -15,8 +16,10 @@ export default function Home() {
 
   const { data: recommendations, error } = useSWR(
     "/api/recommendations",
-    fetch
+    fetcher
   );
+
+  const { data: clips } = useSWR("/api/player-clips", fetcher);
 
   return (
     <div className="container">
@@ -75,6 +78,7 @@ export default function Home() {
                   <audio
                     className="audio"
                     controls
+                    controlsList="nodownload"
                     // https://github.com/mknepprath/culturally-irrelevant/issues/3
                     // In Safari, clicking the play button also opens the containing link.
                     // This prevents event bubbling so that doesn't happen.
@@ -95,6 +99,12 @@ export default function Home() {
           </div>
         ) : null}
       </main>
+
+      {clips ? (
+        <div className="player">
+          <Player clips={clips} />
+        </div>
+      ) : null}
 
       <footer>Built with ♥ by Michael Knepprath</footer>
 
@@ -384,6 +394,10 @@ export default function Home() {
 
         .logo {
           height: 1em;
+        }
+
+        .player {
+          margin-bottom: 40px;
         }
 
         @media (min-width: 600px) {
