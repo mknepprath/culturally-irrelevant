@@ -374,7 +374,7 @@ export default function Home() {
         }
 
         .audio {
-          margin-top: 1rem;
+          margin-bottom: 0.6rem;
           width: 100%;
         }
 
