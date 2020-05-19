@@ -1,35 +1,44 @@
-export default function Player(props) {
-  const [clipIndex, setClipIndex] = React.useState(0);
-  const [playBlip, setPlayBlip] = React.useState(true);
+const randomIndex = (length) => Math.floor(Math.random() * length);
+
+export default function Player({ clips }) {
+  const [clipIndex, setClipIndex] = React.useState(randomIndex(clips.length));
+  const [blip, setBlip] = React.useState(false);
 
   function handleUpdateClipIndexOnEnded() {
-    if (playBlip) {
-      setPlayBlip(false);
+    // When the audio element stops playing, check if the blip was played.
+    if (blip) {
+      // The blip has played, toggle off.
+      setBlip(false);
     } else {
-      setPlayBlip(true);
-      setClipIndex(() => Math.floor(Math.random() * props.clips.length));
+      // The clip has played, play blip and choose next clip.
+      setBlip(true);
+      setClipIndex(() => randomIndex(clips.length));
     }
   }
 
-  const audioPlayerEl = React.useRef(null);
+  const audioElement = React.useRef(null);
   React.useEffect(() => {
-    if (audioPlayerEl.current) audioPlayerEl.current.play();
-  }, [clipIndex, playBlip]);
+    if (audioElement.current) audioElement.current.play();
+  }, [clipIndex, blip]);
+
+  const { clip, episode, name } = clips[clipIndex];
+  const audioSrc = blip ? "/blip-theme.mp3" : clip.url;
 
   return (
     <>
-      <p className="clip-name">
-        {props.clips[clipIndex].name} (Ep. {props.clips[clipIndex].episode})
-      </p>
       <audio
         controls
+        data-clip-count={`${clips.length}`}
         onEnded={handleUpdateClipIndexOnEnded}
-        ref={audioPlayerEl}
-        src={playBlip ? "/blip-theme.mp3" : props.clips[clipIndex].clip.url}
+        ref={audioElement}
+        src={audioSrc}
       >
         Your browser does not support the
         <code>audio</code> element.
       </audio>
+      <p className="clip-name">
+        {name} (Ep. {episode})
+      </p>
       <style jsx>{`
         .clip-name {
           text-align: center;

@@ -1,13 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
+import useSWR from "swr";
 
-import Form from "../components/form";
+import Player from "../components/player";
+
+import fetcher from "../libs/fetch";
 
 export default function Home() {
+  const { data: clips } = useSWR("/api/player-clips", fetcher);
+
   return (
     <div className="container">
       <Head>
-        <title>Culturally Irrelevant - Submit a Recommendation</title>
+        <title>Culturally Irrelevant - The Irrelevant Mixtape</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -18,14 +23,20 @@ export default function Home() {
           </Link>
         </div>
 
-        <h1 className="title">Submit a Recommendation</h1>
+        <img className="ci-gang" src="/gang.jpg" />
+
+        <h1 className="title">The Irrelevant Mixtape</h1>
 
         <p className="description">
-          Please share your favorite unseen, unplayed, unread, and all-around
-          overlooked in movies, video games, comic books, etc!
+          The Culturally Irrelevant highlight reel, including recommendations
+          and other fun hijinks.
         </p>
 
-        <Form />
+        {clips ? (
+          <div className="player">
+            <Player clips={clips} />
+          </div>
+        ) : null}
       </main>
 
       <footer>Built with ♥ by Michael Knepprath</footer>
@@ -54,6 +65,12 @@ export default function Home() {
         .button-wrapper {
           margin-bottom: 24px;
           max-width: 240px;
+          width: 100%;
+        }
+
+        .ci-gang {
+          border-radius: 10px;
+          margin-bottom: 24px;
           width: 100%;
         }
 

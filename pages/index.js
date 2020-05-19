@@ -1,11 +1,11 @@
 import Head from "next/head";
+import Link from "next/link";
 import classnames from "classnames";
 import { Dialog, DialogOverlay } from "@reach/dialog";
 import VisuallyHidden from "@reach/visually-hidden";
 import useSWR from "swr";
 
 import Form from "../components/form";
-import Player from "../components/player";
 
 import fetcher from "../libs/fetch";
 
@@ -19,8 +19,6 @@ export default function Home() {
     fetcher
   );
 
-  const { data: clips } = useSWR("/api/player-clips", fetcher);
-
   return (
     <div className="container">
       <Head>
@@ -29,7 +27,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <img className="ci-logo" src="/logo.png" />
+        <Link href="/mixtape">
+          <img className="ci-logo" src="/logo.png" />
+        </Link>
 
         <h1 className="title">Recommendation Board</h1>
 
@@ -44,9 +44,11 @@ export default function Home() {
           Please share your recommendations with us!
         </p>
 
-        <a className="button-recommend" href="/recommend">
-          <button className="button">Submit a Recommendation</button>
-        </a>
+        <div className="button-recommend">
+          <Link href="/recommend">
+            <button className="button">Submit a Recommendation</button>
+          </Link>
+        </div>
 
         {/* For learning, teaching, sharing and remembering. */}
 
@@ -60,51 +62,57 @@ export default function Home() {
 
         {recommendations && !error ? (
           <div className="grid">
-            {recommendations.map((r) => (
-              <a
-                key={r.id}
-                href={r.URL}
-                rel="noopener noreferrer"
-                target="_blank"
-                className={classnames("card", { official: r.Official })}
-              >
-                <h3>
-                  {r.Recommendation}
-                  {r.Year && ` (${r.Year} ${r.Medium})`}
-                  {r.URL && <span className="external-link"> ↗</span>}
-                </h3>
+            {recommendations.map(
+              ({
+                clip,
+                id,
+                medium,
+                message,
+                name,
+                official,
+                recommendation,
+                url,
+                year,
+              }) => (
+                <a
+                  key={id}
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className={classnames("card", { official })}
+                >
+                  <h3>
+                    {recommendation}
+                    {year && ` (${year} ${medium})`}
+                    {url && <span className="external-link"> ↗</span>}
+                  </h3>
 
-                {r.Clip ? (
-                  <audio
-                    className="audio"
-                    controls
-                    controlsList="nodownload"
-                    // https://github.com/mknepprath/culturally-irrelevant/issues/3
-                    // In Safari, clicking the play button also opens the containing link.
-                    // This prevents event bubbling so that doesn't happen.
-                    onClick={(event) => event.preventDefault()}
-                    src={r.Clip[0].url}
-                  >
-                    Your browser does not support the
-                    <code>audio</code> element.
-                  </audio>
-                ) : null}
+                  {clip ? (
+                    <audio
+                      className="audio"
+                      controls
+                      controlsList="nodownload"
+                      // https://github.com/mknepprath/culturally-irrelevant/issues/3
+                      // In Safari, clicking the play button also opens the containing link.
+                      // This prevents event bubbling so that doesn't happen.
+                      onClick={(event) => event.preventDefault()}
+                      src={clip.url}
+                    >
+                      Your browser does not support the
+                      <code>audio</code> element.
+                    </audio>
+                  ) : null}
 
-                <p>
-                  {r.Message && `"${r.Message}"`}
-                  <em> - {r.Name}</em>
-                </p>
-              </a>
-            ))}
+                  <p>
+                    {message && `"${message}"`}
+                    <em> - {name}</em>
+                  </p>
+                </a>
+              )
+            )}
           </div>
         ) : null}
       </main>
-
-      {clips ? (
-        <div className="player">
-          <Player clips={clips} />
-        </div>
-      ) : null}
 
       <footer>Built with ♥ by Michael Knepprath</footer>
 
@@ -257,7 +265,15 @@ export default function Home() {
           height: 288px;
           margin-bottom: 48px;
           object-fit: contain;
+          cursor: pointer;
           width: 288px;
+        }
+
+        .ci-logo:hover,
+        .ci-logo:focus,
+        .ci-logo:active {
+          animation: shake 0.2s;
+          animation-iteration-count: infinite;
         }
 
         .title a {
@@ -404,6 +420,42 @@ export default function Home() {
           .grid {
             gap: 1.5rem;
             grid-template-columns: 1fr 1fr;
+          }
+        }
+
+        @keyframes shake {
+          0% {
+            transform: translate(1px, 1px) rotate(0deg);
+          }
+          10% {
+            transform: translate(-1px, -1px) rotate(-1deg);
+          }
+          20% {
+            transform: translate(-2px, 0px) rotate(1deg);
+          }
+          30% {
+            transform: translate(2px, 2px) rotate(0deg);
+          }
+          40% {
+            transform: translate(1px, -1px) rotate(1deg);
+          }
+          50% {
+            transform: translate(-1px, 2px) rotate(-1deg);
+          }
+          60% {
+            transform: translate(-2px, 1px) rotate(0deg);
+          }
+          70% {
+            transform: translate(2px, 1px) rotate(-1deg);
+          }
+          80% {
+            transform: translate(-1px, -1px) rotate(1deg);
+          }
+          90% {
+            transform: translate(1px, 2px) rotate(0deg);
+          }
+          100% {
+            transform: translate(1px, -2px) rotate(-1deg);
           }
         }
       `}</style>

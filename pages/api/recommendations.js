@@ -20,8 +20,27 @@ export default async (req, res) => {
         // This function will get called for each page of records.
         records.forEach((record) => {
           const { fields } = record;
+          const clipArray = record.get("Clip");
+          const episode = record.get("Episode");
+          const medium = record.get("Medium");
+          const message = record.get("Message");
           const name = record.get("Name");
-          posts.unshift({ id: record.id, name, ...fields });
+          const official = record.get("Official");
+          const recommendation = record.get("Recommendation");
+          const url = record.get("URL");
+          const year = record.get("Year");
+          posts.unshift({
+            id: record.id,
+            clip: clipArray && clipArray[0],
+            episode,
+            medium,
+            message,
+            name,
+            official,
+            recommendation,
+            url,
+            year,
+          });
         });
 
         // If there are more records, this will get called again.
