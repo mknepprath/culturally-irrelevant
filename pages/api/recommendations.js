@@ -10,6 +10,16 @@ export default async (req, res) => {
 
   let posts = [];
 
+  // Airtable filter formula example:
+  // filterByFormula: `
+  //   AND(
+  //     NOT({Publish} = ''),
+  //     OR(
+  //       {Medium} = 'Book'
+  //     )
+  //   )
+  // `,
+
   base("Recommendations")
     .select({
       filterByFormula: "NOT({Publish} = '')",
@@ -19,7 +29,6 @@ export default async (req, res) => {
       (records, fetchNextPage) => {
         // This function will get called for each page of records.
         records.forEach((record) => {
-          const { fields } = record;
           const clipArray = record.get("Clip");
           const episode = record.get("Episode");
           const medium = record.get("Medium");

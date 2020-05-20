@@ -1,3 +1,5 @@
+import Head from "next/head";
+
 const randomIndex = (length) => Math.floor(Math.random() * length);
 
 export default function Player({ clips }) {
@@ -26,6 +28,11 @@ export default function Player({ clips }) {
 
   return (
     <>
+      <Head>
+        <title>
+          The Irrelevant Mixtape - {name} (Ep. {episode})
+        </title>
+      </Head>
       <audio
         controls
         data-clip-count={`${clips.length}`}

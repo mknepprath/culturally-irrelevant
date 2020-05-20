@@ -1,6 +1,7 @@
+import classnames from "classnames";
 import { Formik } from "formik";
 
-export default function Form() {
+export default function Form(props) {
   const [successMessage, setSuccessMessage] = React.useState("");
 
   return (
@@ -36,7 +37,10 @@ export default function Form() {
           isSubmitting,
           /* and other goodies */
         }) => (
-          <form onSubmit={handleSubmit}>
+          <form
+            className={classnames({ dark: props.isDarkMode })}
+            onSubmit={handleSubmit}
+          >
             <label htmlFor="recommendation">Recommendation</label>
             <input
               maxLength="48"
@@ -90,7 +94,11 @@ export default function Form() {
             />
             {errors.message && touched.message && errors.message}
 
-            <button className="button" disabled={isSubmitting} type="submit">
+            <button
+              className={classnames("button", { dark: props.isDarkMode })}
+              disabled={isSubmitting}
+              type="submit"
+            >
               Submit
             </button>
             <p>{successMessage}</p>
@@ -108,7 +116,19 @@ export default function Form() {
           font-size: 1rem;
           font-weight: 500;
           padding: 0.75rem;
-          transition: 0.15s ease;
+          width: 100%;
+          transition: background-color 0.15s ease, box-shadow 0.15s ease,
+            transform 0.15s ease;
+        }
+        .button.dark {
+          color: #e5e5e5;
+          background-color: #1f1a19;
+        }
+        @media (prefers-color-scheme: dark) {
+          .button {
+            color: #e5e5e5;
+            background-color: #1f1a19;
+          }
         }
         .button:hover,
         .button:focus,
@@ -116,6 +136,22 @@ export default function Form() {
           background-color: #ffe234;
           box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
           transform: translate(0, -2px);
+        }
+        .button.dark:hover,
+        .button.dark:focus,
+        .button.dark:active {
+          background-color: #2f294f;
+          box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+          transform: translate(0, -2px);
+        }
+        @media (prefers-color-scheme: dark) {
+          .button:hover,
+          .button:focus,
+          .button:active {
+            background-color: #2f294f;
+            box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+            transform: translate(0, -2px);
+          }
         }
 
         form {
@@ -142,6 +178,10 @@ export default function Form() {
           width: 100%;
           max-width: 100%;
           margin-bottom: 16px;
+        }
+        form.dark input,
+        form.dark textarea {
+          background-color: #e5e5e5;
         }
 
         h2 {

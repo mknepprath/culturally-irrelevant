@@ -9,10 +9,12 @@ import Form from "../components/form";
 
 import fetcher from "../libs/fetch";
 
-export default function Home() {
+export default function Home({ theme }) {
   const [showDialog, setShowDialog] = React.useState(false);
   const open = () => setShowDialog(true);
   const close = () => setShowDialog(false);
+
+  const [isDarkMode, setIsDarkMode] = theme;
 
   const { data: recommendations, error } = useSWR(
     "/api/recommendations",
@@ -28,7 +30,10 @@ export default function Home() {
 
       <main>
         <Link href="/mixtape">
-          <img className="ci-logo" src="/logo.png" />
+          <img
+            className={classnames("ci-logo", { dark: isDarkMode })}
+            src="/logo.png"
+          />
         </Link>
 
         <h1 className="title">Recommendation Board</h1>
@@ -46,7 +51,9 @@ export default function Home() {
 
         <div className="button-recommend">
           <Link href="/recommend">
-            <button className="button">Submit a Recommendation</button>
+            <button className={classnames("button", { dark: isDarkMode })}>
+              Submit a Recommendation
+            </button>
           </Link>
         </div>
 
@@ -79,7 +86,7 @@ export default function Home() {
                   href={url}
                   rel="noopener noreferrer"
                   target="_blank"
-                  className={classnames("card", { official })}
+                  className={classnames("card", { official, dark: isDarkMode })}
                 >
                   <h3>
                     {recommendation}
@@ -114,18 +121,20 @@ export default function Home() {
         ) : null}
       </main>
 
-      <footer>Built with ♥ by Michael Knepprath</footer>
+      <footer className={classnames({ dark: isDarkMode })}>
+        Built with ♥ by Michael Knepprath
+      </footer>
 
       <DialogOverlay
-        style={{ background: "hsla(0, 100%, 100%, 0.9)" }}
+        className={classnames("dialog-overlay", { dark: isDarkMode })}
         isOpen={showDialog}
         onDismiss={close}
       >
         <Dialog
           aria-label="Form for submitting a recommendation"
+          className={classnames("dialog", { dark: isDarkMode })}
           isOpen={showDialog}
           onDismiss={close}
-          style={{ borderRadius: 10, border: "4px solid #000000" }}
         >
           <button className="button-close pull-right" onClick={close}>
             <VisuallyHidden>Close</VisuallyHidden>
@@ -138,13 +147,25 @@ export default function Home() {
             overlooked in movies, video games, comic books, etc!{" "}
           </p>
 
-          <Form />
+          <Form isDarkMode={isDarkMode} />
         </Dialog>
       </DialogOverlay>
 
-      <button className="fab button" onClick={open}>
+      <button
+        className={classnames("fab", "button", { dark: isDarkMode })}
+        onClick={open}
+      >
         Submit a Recommendation
       </button>
+
+      <div className="fab-theme">
+        <button
+          className={classnames("button", { dark: isDarkMode })}
+          onClick={() => setIsDarkMode((prevIsDarkMode) => !prevIsDarkMode)}
+        >
+          {isDarkMode ? "Light Mode" : "Dark Mode"}
+        </button>
+      </div>
 
       <style jsx>{`
         .fab {
@@ -156,6 +177,23 @@ export default function Home() {
         @media (min-width: 600px) {
           .fab {
             display: block;
+          }
+        }
+
+        .fab-theme {
+          display: none;
+          position: fixed;
+          top: 32px;
+          right: 32px;
+        }
+        @media (min-width: 600px) {
+          .fab-theme {
+            display: block;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          .fab-theme {
+            display: none;
           }
         }
 
@@ -177,7 +215,18 @@ export default function Home() {
           font-size: 1rem;
           font-weight: 500;
           padding: 0.75rem;
-          transition: 0.15s ease;
+          transition: background-color 0.15s ease, box-shadow 0.15s ease,
+            transform 0.15s ease;
+        }
+        .button.dark {
+          color: #e5e5e5;
+          background-color: #1f1a19;
+        }
+        @media (prefers-color-scheme: dark) {
+          .button {
+            color: #e5e5e5;
+            background-color: #1f1a19;
+          }
         }
         .button:hover,
         .button:focus,
@@ -186,14 +235,31 @@ export default function Home() {
           box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
           transform: translate(0, -2px);
         }
+        .button.dark:hover,
+        .button.dark:focus,
+        .button.dark:active {
+          background-color: #2f294f;
+          box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+          transform: translate(0, -2px);
+        }
+        @media (prefers-color-scheme: dark) {
+          .button:hover,
+          .button:focus,
+          .button:active {
+            background-color: #2f294f;
+            box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+            transform: translate(0, -2px);
+          }
+        }
 
         .button-close {
+          background-color: transparent;
           border: none;
           cursor: pointer;
           font-size: 3rem;
           font-weight: 500;
           line-height: 0.8rem;
-          transition: 0.15s ease;
+          transition: color 0.15s ease, transform 0.15s ease;
         }
         .button-close:hover,
         .button-close:focus,
@@ -242,6 +308,15 @@ export default function Home() {
           display: flex;
           justify-content: center;
           align-items: center;
+          transition: border-top 0.15s ease;
+        }
+        footer.dark {
+          border-top: 1px solid #312725;
+        }
+        @media (prefers-color-scheme: dark) {
+          footer {
+            border-top: 1px solid #312725;
+          }
         }
 
         footer img {
@@ -267,6 +342,15 @@ export default function Home() {
           object-fit: contain;
           cursor: pointer;
           width: 288px;
+          transition: background-color 0.15s ease;
+        }
+        .ci-logo.dark {
+          background-color: #312971;
+        }
+        @media (prefers-color-scheme: dark) {
+          .ci-logo {
+            background-color: #312971;
+          }
         }
 
         .ci-logo:hover,
@@ -332,6 +416,7 @@ export default function Home() {
         }
 
         .card {
+          background-color: #ffffff;
           box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
           transform: translate(0, 0);
           padding: 1.5rem;
@@ -341,13 +426,33 @@ export default function Home() {
           border: 4px solid #000000;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease,
-            box-shadow 0.15s ease, transform 0.15s ease;
+            box-shadow 0.15s ease, transform 0.15s ease,
+            background-color 0.15s ease;
+        }
+        .card.dark {
+          background-color: #1f1a19;
+        }
+        @media (prefers-color-scheme: dark) {
+          .card {
+            background-color: #1f1a19;
+          }
         }
 
         .card.official {
           background-color: #a90117;
           border: 4px solid #a90117;
           color: #ffffff;
+          transition: border 0.15s ease;
+        }
+        .card.official.dark {
+          background-color: #2d2d6f;
+          border: 4px solid #000000;
+        }
+        @media (prefers-color-scheme: dark) {
+          .card.official {
+            background-color: #2d2d6f;
+            border: 4px solid #000000;
+          }
         }
 
         .card:hover,
@@ -463,11 +568,45 @@ export default function Home() {
       <style jsx global>{`
         html,
         body {
+          background-color: ${isDarkMode ? "#1f1a19" : "inherit"};
+          color: ${isDarkMode ? "#E5E5E5" : "inherit"};
           padding: 0;
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+        }
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1f1a19;
+            color: #e5e5e6;
+          }
+        }
+
+        .dialog-overlay {
+          background-color: hsla(0, 100%, 100%, 0.9);
+        }
+        .dialog-overlay.dark {
+          background-color: hsla(0, 100%, 0%, 0.9);
+        }
+        @media (prefers-color-scheme: dark) {
+          .dialog-overlay {
+            background-color: hsla(0, 100%, 0%, 0.9);
+          }
+        }
+
+        .dialog {
+          background-color: #ffffff;
+          border-radius: 10px;
+          border: 4px solid #000000;
+        }
+        .dialog.dark {
+          background-color: #1f1a19;
+        }
+        @media (prefers-color-scheme: dark) {
+          .dialog {
+            background-color: #1f1a19;
+          }
         }
 
         * {

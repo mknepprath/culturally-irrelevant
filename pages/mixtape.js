@@ -1,13 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
+import classnames from "classnames";
 import useSWR from "swr";
 
 import Player from "../components/player";
 
 import fetcher from "../libs/fetch";
 
-export default function Home() {
+export default function Mixtape({ theme }) {
   const { data: clips } = useSWR("/api/player-clips", fetcher);
+
+  const [isDarkMode, setIsDarkMode] = theme;
 
   return (
     <div className="container">
@@ -19,11 +22,16 @@ export default function Home() {
       <main>
         <div className="button-wrapper">
           <Link href="/">
-            <button className="button">Go Home</button>
+            <button className={classnames("button", { dark: isDarkMode })}>
+              Go Home
+            </button>
           </Link>
         </div>
 
-        <img className="ci-gang" src="/gang.jpg" />
+        <img
+          className={classnames("ci-gang", { dark: isDarkMode })}
+          src="/gang.jpg"
+        />
 
         <h1 className="title">The Irrelevant Mixtape</h1>
 
@@ -39,9 +47,37 @@ export default function Home() {
         ) : null}
       </main>
 
-      <footer>Built with ♥ by Michael Knepprath</footer>
+      <footer className={classnames({ dark: isDarkMode })}>
+        Built with ♥ by Michael Knepprath
+      </footer>
+
+      <div className="fab-theme">
+        <button
+          className={classnames("button", { dark: isDarkMode })}
+          onClick={() => setIsDarkMode((prevIsDarkMode) => !prevIsDarkMode)}
+        >
+          {isDarkMode ? "Light Mode" : "Dark Mode"}
+        </button>
+      </div>
 
       <style jsx>{`
+        .fab-theme {
+          display: none;
+          position: fixed;
+          top: 32px;
+          right: 32px;
+        }
+        @media (min-width: 600px) {
+          .fab-theme {
+            display: block;
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          .fab-theme {
+            display: none;
+          }
+        }
+
         .button {
           background-color: #ffffff;
           border: 4px solid #000000;
@@ -51,8 +87,19 @@ export default function Home() {
           font-size: 1rem;
           font-weight: 500;
           padding: 0.75rem;
-          transition: 0.15s ease;
           width: 100%;
+          transition: background-color 0.15s ease, box-shadow 0.15s ease,
+            transform 0.15s ease;
+        }
+        .button.dark {
+          color: #e5e5e5;
+          background-color: #1f1a19;
+        }
+        @media (prefers-color-scheme: dark) {
+          .button {
+            color: #e5e5e5;
+            background-color: #1f1a19;
+          }
         }
         .button:hover,
         .button:focus,
@@ -60,6 +107,22 @@ export default function Home() {
           background-color: #ffe234;
           box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
           transform: translate(0, -2px);
+        }
+        .button.dark:hover,
+        .button.dark:focus,
+        .button.dark:active {
+          background-color: #2f294f;
+          box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+          transform: translate(0, -2px);
+        }
+        @media (prefers-color-scheme: dark) {
+          .button:hover,
+          .button:focus,
+          .button:active {
+            background-color: #2f294f;
+            box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+            transform: translate(0, -2px);
+          }
         }
 
         .button-wrapper {
@@ -72,6 +135,14 @@ export default function Home() {
           border-radius: 10px;
           margin-bottom: 24px;
           width: 100%;
+        }
+        .ci-gang.dark {
+          filter: grayscale(95%);
+        }
+        @media (prefers-color-scheme: dark) {
+          .ci-gang {
+            filter: grayscale(95%);
+          }
         }
 
         .pull-right {
@@ -114,6 +185,14 @@ export default function Home() {
           display: flex;
           justify-content: center;
           align-items: center;
+        }
+        footer.dark {
+          border-top: 1px solid #312725;
+        }
+        @media (prefers-color-scheme: dark) {
+          footer {
+            border-top: 1px solid #312725;
+          }
         }
 
         footer img {
@@ -173,11 +252,19 @@ export default function Home() {
       <style jsx global>{`
         html,
         body {
+          background-color: ${isDarkMode ? "#1f1a19" : "inherit"};
+          color: ${isDarkMode ? "#ffffff" : "inherit"};
           padding: 0;
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+        }
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1f1a19;
+            color: #e5e5e6;
+          }
         }
 
         * {

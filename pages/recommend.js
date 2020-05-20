@@ -1,9 +1,12 @@
 import Head from "next/head";
 import Link from "next/link";
+import classnames from "classnames";
 
 import Form from "../components/form";
 
-export default function Home() {
+export default function Recommend({ theme }) {
+  const [isDarkMode] = theme;
+
   return (
     <div className="container">
       <Head>
@@ -28,7 +31,9 @@ export default function Home() {
         <Form />
       </main>
 
-      <footer>Built with ♥ by Michael Knepprath</footer>
+      <footer className={classnames({ dark: isDarkMode })}>
+        Built with ♥ by Michael Knepprath
+      </footer>
 
       <style jsx>{`
         .button {
@@ -40,8 +45,19 @@ export default function Home() {
           font-size: 1rem;
           font-weight: 500;
           padding: 0.75rem;
-          transition: 0.15s ease;
           width: 100%;
+          transition: background-color 0.15s ease, box-shadow 0.15s ease,
+            transform 0.15s ease;
+        }
+        .button.dark {
+          color: #e5e5e5;
+          background-color: #1f1a19;
+        }
+        @media (prefers-color-scheme: dark) {
+          .button {
+            color: #e5e5e5;
+            background-color: #1f1a19;
+          }
         }
         .button:hover,
         .button:focus,
@@ -49,6 +65,22 @@ export default function Home() {
           background-color: #ffe234;
           box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
           transform: translate(0, -2px);
+        }
+        .button.dark:hover,
+        .button.dark:focus,
+        .button.dark:active {
+          background-color: #2f294f;
+          box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+          transform: translate(0, -2px);
+        }
+        @media (prefers-color-scheme: dark) {
+          .button:hover,
+          .button:focus,
+          .button:active {
+            background-color: #2f294f;
+            box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+            transform: translate(0, -2px);
+          }
         }
 
         .button-wrapper {
@@ -97,6 +129,14 @@ export default function Home() {
           display: flex;
           justify-content: center;
           align-items: center;
+        }
+        footer.dark {
+          border-top: 1px solid #312725;
+        }
+        @media (prefers-color-scheme: dark) {
+          footer {
+            border-top: 1px solid #312725;
+          }
         }
 
         footer img {
@@ -156,11 +196,19 @@ export default function Home() {
       <style jsx global>{`
         html,
         body {
+          background-color: ${isDarkMode ? "#1f1a19" : "inherit"};
+          color: ${isDarkMode ? "#E5E5E5" : "inherit"};
           padding: 0;
           margin: 0;
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
+        }
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: #1f1a19;
+            color: #e5e5e6;
+          }
         }
 
         * {

@@ -3,7 +3,8 @@
 import "@reach/dialog/styles.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  const theme = React.useState(false);
+  return <Component {...pageProps} theme={theme} />;
 }
 
 // Only uncomment this method if you have blocking data requirements for
