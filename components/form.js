@@ -1,7 +1,7 @@
 import classnames from "classnames";
 import { Formik } from "formik";
 
-export default function Form(props) {
+export default function Form({ isDarkMode }) {
   const [successMessage, setSuccessMessage] = React.useState("");
 
   return (
@@ -38,7 +38,7 @@ export default function Form(props) {
           /* and other goodies */
         }) => (
           <form
-            className={classnames({ dark: props.isDarkMode })}
+            className={classnames({ dark: isDarkMode })}
             onSubmit={handleSubmit}
           >
             <label htmlFor="recommendation">Recommendation</label>
@@ -95,7 +95,7 @@ export default function Form(props) {
             {errors.message && touched.message && errors.message}
 
             <button
-              className={classnames("button", { dark: props.isDarkMode })}
+              className={classnames("button", { dark: isDarkMode })}
               disabled={isSubmitting}
               type="submit"
             >
