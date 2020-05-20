@@ -91,7 +91,6 @@ export default function Home({ theme }) {
                   <h3>
                     {recommendation}
                     {year && ` (${year} ${medium})`}
-                    {url && <span className="external-link"> ↗</span>}
                   </h3>
 
                   {clip ? (
@@ -114,6 +113,8 @@ export default function Home({ theme }) {
                     {message && `"${message}"`}
                     <em> - {name}</em>
                   </p>
+
+                  {url && <span className="external-link">↗</span>}
                 </a>
               )
             )}
@@ -473,7 +474,7 @@ export default function Home({ theme }) {
         .card:hover h3,
         .card:focus h3,
         .card:active h3 {
-          transform: rotate(-2deg) scale(1.1) translate(10px, 0);
+          transform: rotate(-2deg) scale(1.1) translate(8px, 0);
         }
 
         .card.official:hover h3,
@@ -489,17 +490,51 @@ export default function Home({ theme }) {
         }
 
         .card .external-link {
-          opacity: 1;
-          transition: opacity 0.15s ease;
-        }
-        .card:hover .external-link,
-        .card:focus .external-link,
-        .card:active .external-link {
-          opacity: 1;
+          opacity: 0;
+          transition: right 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
         }
         @media (min-width: 600px) {
           .card .external-link {
+            background-color: #a90116;
+            border: 4px solid #a90116;
+            border-radius: 16px;
+            display: block;
+            font-size: 1.8em;
+            height: 32px;
+            line-height: 24px;
+            position: absolute;
+            text-align: center;
+            top: -8px;
+            right: 0px;
+            width: 32px;
             opacity: 0;
+            transform: rotate(-25deg);
+          }
+          .card.dark .external-link {
+            background-color: #29316d;
+            border: 4px solid #000000;
+            border-radius: 20px;
+            height: 40px;
+            line-height: 30px;
+            width: 40px;
+          }
+          .card:hover .external-link,
+          .card:focus .external-link,
+          .card:active .external-link {
+            box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
+            opacity: 1;
+            right: -12px;
+            transform: rotate(0deg);
+          }
+        }
+        @media (prefers-color-scheme: dark) {
+          .card .external-link {
+            background-color: #29316d;
+            border: 4px solid #000000;
+            border-radius: 20px;
+            height: 40px;
+            line-height: 30px;
+            width: 40px;
           }
         }
 
