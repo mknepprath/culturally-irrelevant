@@ -34,7 +34,7 @@ export default async (req, res) => {
           const medium = record.get("Medium");
           const message = record.get("Message");
           const name = record.get("Name");
-          const official = record.get("Official");
+          const isOfficial = record.get("Official");
           const recommendation = record.get("Recommendation");
           const url = record.get("URL");
           const year = record.get("Year");
@@ -45,7 +45,7 @@ export default async (req, res) => {
             medium,
             message,
             name,
-            official,
+            isOfficial,
             recommendation,
             url,
             year,

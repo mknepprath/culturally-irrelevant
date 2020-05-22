@@ -1,0 +1,42 @@
+.dialogOverlay {
+  background-color: hsla(0, 100%, 100%, 0.9);
+}
+.dialogOverlay.dark {
+  background-color: hsla(0, 100%, 0%, 0.9);
+}
+@media (prefers-color-scheme: dark) {
+  .dialogOverlay {
+    background-color: hsla(0, 100%, 0%, 0.9);
+  }
+}
+
+.dialog {
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 4px solid #000000;
+}
+.dialog.dark {
+  background-color: #1f1a19;
+}
+@media (prefers-color-scheme: dark) {
+  .dialog {
+    background-color: #1f1a19;
+  }
+}
+
+.closeDialogButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 0.8rem;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.closeDialogButton:hover,
+.closeDialogButton:focus,
+.closeDialogButton:active {
+  color: #a90116;
+  transform: translate(0, -2px);
+}

@@ -1,0 +1,25 @@
+@media (prefers-color-scheme: dark) {
+  .darkModeSwitch {
+    display: none;
+  }
+}
+
+.buttonWrapper {
+  margin-bottom: 24px;
+  max-width: 240px;
+  width: 100%;
+}
+
+.ciGang {
+  border-radius: 10px;
+  margin-bottom: 24px;
+  width: 100%;
+}
+.ciGang.dark {
+  filter: grayscale(95%);
+}
+@media (prefers-color-scheme: dark) {
+  .ciGang {
+    filter: grayscale(95%);
+  }
+}

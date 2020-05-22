@@ -1,0 +1,14 @@
+.fab {
+  display: none;
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+}
+.fab.top {
+  top: 32px;
+}
+@media (min-width: 600px) {
+  .fab {
+    display: block;
+  }
+}
