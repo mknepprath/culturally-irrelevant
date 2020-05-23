@@ -57,12 +57,13 @@
 
 .message {
   background-color: var(--white);
-  box-shadow: 8px 8px 0 var(--black);
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
   border: var(--border);
   border-radius: 10px;
+  box-shadow: 8px 8px 0 var(--black);
+  color: inherit;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  text-align: left;
 }
 .message:not(.error) {
   animation: shake 0.6s;
@@ -88,10 +89,6 @@
   .error {
     background-color: var(--highlight-dark);
   }
-}
-
-.player {
-  margin-bottom: 40px;
 }
 
 @keyframes shake {

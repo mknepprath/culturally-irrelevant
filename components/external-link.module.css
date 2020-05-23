@@ -1,7 +1,7 @@
 .link {
   background-color: var(--white);
   border: var(--border);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   box-shadow: 8px 8px 0 var(--black);
   color: var(--black);
   cursor: pointer;
@@ -27,22 +27,22 @@
 .link:focus,
 .link:active {
   background-color: var(--highlight);
-  box-shadow: 16px 16px 0 var(--black);
-  transform: translate(0, -2px);
+  box-shadow: var(--shadow);
+  transform: var(--translate);
 }
 .link.dark:hover,
 .link.dark:focus,
 .link.dark:active {
   background-color: var(--highlight-dark);
-  box-shadow: 16px 16px 0 var(--black);
-  transform: translate(0, -2px);
+  box-shadow: var(--shadow);
+  transform: var(--translate);
 }
 @media (prefers-color-scheme: dark) {
   .link:hover,
   .link:focus,
   .link:active {
     background-color: var(--highlight-dark);
-    box-shadow: 16px 16px 0 var(--black);
-    transform: translate(0, -2px);
+    box-shadow: var(--shadow);
+    transform: var(--translate);
   }
 }

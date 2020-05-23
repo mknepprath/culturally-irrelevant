@@ -12,7 +12,7 @@
 
 .dialog {
   background-color: var(--white);
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   border: var(--border);
 }
 .dialog.dark {
@@ -41,5 +41,5 @@
 .closeDialogButton:focus,
 .closeDialogButton:active {
   color: var(--culturally-irrelevant-red);
-  transform: translate(0, -2px);
+  transform: var(--translate);
 }

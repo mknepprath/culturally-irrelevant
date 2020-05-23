@@ -15,6 +15,9 @@
   /* Design */
   --border: 4px solid var(--black);
   --border-red: 4px solid var(--culturally-irrelevant-red);
+  --border-radius: 10px;
+  --shadow: 16px 16px 0 var(--black);
+  --translate: translate(0, -2px);
 }
 
 html,
