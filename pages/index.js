@@ -50,6 +50,10 @@ export default function Home({ theme }) {
           and whatever else they could come up with.
         </p>
 
+        <InternalLink href="/mixtape" isDarkMode={isDarkMode}>
+          Listen to the Mixtape
+        </InternalLink>
+
         <p className="description">
           Please share your recommendations with us!
         </p>
