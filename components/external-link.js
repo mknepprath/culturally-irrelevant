@@ -1,6 +1,6 @@
 import classnames from "classnames";
 
-import styles from "./external-link.module.css";
+import styles from "./link.module.css";
 
 export default function ExternalLink({
   children,

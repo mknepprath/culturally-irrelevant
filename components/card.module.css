@@ -1,6 +1,6 @@
 .card {
   background-color: var(--white);
-  box-shadow: 8px 8px 0 var(--black);
+  box-shadow: var(--shadow);
   transform: translate(0, 0);
   padding: 1.5rem;
   text-align: left;
@@ -43,8 +43,8 @@
 .card.official:hover,
 .card.official:focus,
 .card.official:active {
-  box-shadow: var(--shadow);
-  transform: var(--translate);
+  box-shadow: var(--shadow-2x);
+  transform: var(--translate-up);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
@@ -106,7 +106,7 @@
   .card:hover .externalLink,
   .card:focus .externalLink,
   .card:active .externalLink {
-    box-shadow: 8px 8px 0 var(--black);
+    box-shadow: var(--shadow);
     opacity: 1;
     right: -12px;
     transform: rotate(0deg);

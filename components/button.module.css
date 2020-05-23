@@ -2,7 +2,7 @@
   background-color: var(--white);
   border: var(--border);
   border-radius: var(--border-radius);
-  box-shadow: 8px 8px 0 var(--black);
+  box-shadow: var(--shadow);
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
@@ -14,8 +14,8 @@
 .button:focus,
 .button:active {
   background-color: var(--highlight);
-  box-shadow: var(--shadow);
-  transform: var(--translate);
+  box-shadow: var(--shadow-2x);
+  transform: var(--translate-up);
 }
 
 .button.dark {

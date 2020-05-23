@@ -14,6 +14,7 @@
   background-color: var(--white);
   border-radius: var(--border-radius);
   border: var(--border);
+  position: relative;
 }
 .dialog.dark {
   background-color: var(--dark);
@@ -28,10 +29,13 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  float: right;
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 500;
   line-height: 0.8rem;
+  padding: 0px;
+  position: absolute;
+  right: 16px;
+  top: 16px;
   transition: color 0.15s ease, transform 0.15s ease;
 }
 .closeDialogButton.dark {
@@ -41,5 +45,5 @@
 .closeDialogButton:focus,
 .closeDialogButton:active {
   color: var(--culturally-irrelevant-red);
-  transform: var(--translate);
+  transform: var(--translate-up);
 }

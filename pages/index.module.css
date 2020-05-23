@@ -59,7 +59,7 @@
   background-color: var(--white);
   border: var(--border);
   border-radius: 10px;
-  box-shadow: 8px 8px 0 var(--black);
+  box-shadow: var(--shadow);
   color: inherit;
   margin-top: 3rem;
   padding: 1.5rem;

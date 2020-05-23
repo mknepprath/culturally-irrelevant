@@ -2,7 +2,7 @@
   background-color: var(--white);
   border: var(--border);
   border-radius: var(--border-radius);
-  box-shadow: 8px 8px 0 var(--black);
+  box-shadow: var(--shadow);
   color: var(--black);
   cursor: pointer;
   display: block;
@@ -13,36 +13,32 @@
   transition: background-color 0.15s ease, box-shadow 0.15s ease,
     transform 0.15s ease;
 }
-.link.dark {
-  color: var(--white-dark);
-  background-color: var(--dark);
-}
-@media (prefers-color-scheme: dark) {
-  .link {
-    color: var(--white-dark);
-    background-color: var(--dark);
-  }
-}
 .link:hover,
 .link:focus,
 .link:active {
   background-color: var(--highlight);
-  box-shadow: var(--shadow);
-  transform: var(--translate);
+  box-shadow: var(--shadow-2x);
+  transform: var(--translate-up);
+}
+
+.link.dark {
+  color: var(--white-dark);
+  background-color: var(--dark);
 }
 .link.dark:hover,
 .link.dark:focus,
 .link.dark:active {
   background-color: var(--highlight-dark);
-  box-shadow: var(--shadow);
-  transform: var(--translate);
 }
+
 @media (prefers-color-scheme: dark) {
+  .link {
+    color: var(--white-dark);
+    background-color: var(--dark);
+  }
   .link:hover,
   .link:focus,
   .link:active {
     background-color: var(--highlight-dark);
-    box-shadow: var(--shadow);
-    transform: var(--translate);
   }
 }

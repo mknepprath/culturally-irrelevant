@@ -28,6 +28,8 @@ export default function Dialog({
         onDismiss={close}
         {...props}
       >
+        {children}
+
         <button
           className={classnames(styles.closeDialogButton, {
             [styles.dark]: isDarkMode,
@@ -37,8 +39,6 @@ export default function Dialog({
           <VisuallyHidden>Close</VisuallyHidden>
           <span aria-hidden>×</span>
         </button>
-
-        {children}
       </ReachDialog>
     </ReachDialogOverlay>
   );
