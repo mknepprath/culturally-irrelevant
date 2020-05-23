@@ -4,11 +4,11 @@ import classnames from "classnames";
 import useSWR from "swr";
 
 import Button from "../components/button";
-import ButtonLink from "../components/button-link";
 import Card from "../components/card";
 import Dialog from "../components/dialog";
 import FloatingActionButton from "../components/fab";
 import Form from "../components/form";
+import InternalLink from "../components/internal-link";
 
 import fetcher from "../libs/fetch";
 
@@ -54,24 +54,34 @@ export default function Home({ theme }) {
           Please share your recommendations with us!
         </p>
 
-        <ButtonLink
+        <InternalLink
           className={styles.recommendLink}
           href="/recommend"
           isDarkMode={isDarkMode}
         >
           Submit a Recommendation
-        </ButtonLink>
+        </InternalLink>
 
         {/* For learning, teaching, sharing and remembering. */}
 
         {error ? (
-          <div className={classnames(styles.card, styles.grid, styles.error)}>
+          <div
+            className={classnames(styles.message, styles.error, {
+              [styles.dark]: isDarkMode,
+            })}
+          >
             Failed to load recommendations
           </div>
         ) : null}
 
         {!recommendations && !error ? (
-          <div className={classnames(styles.card, styles.grid)}>Loading...</div>
+          <div
+            className={classnames(styles.message, {
+              [styles.dark]: isDarkMode,
+            })}
+          >
+            Loading...
+          </div>
         ) : null}
 
         {recommendations && !error ? (
@@ -127,21 +137,6 @@ export default function Home({ theme }) {
           {isDarkMode ? "Light Mode" : "Dark Mode"}
         </Button>
       </FloatingActionButton>
-
-      <style jsx global>{`
-        html,
-        body {
-          background-color: ${isDarkMode ? "#1f1a19" : "inherit"};
-          color: ${isDarkMode ? "#E5E5E5" : "inherit"};
-        }
-        @media (prefers-color-scheme: dark) {
-          html,
-          body {
-            background-color: #1f1a19;
-            color: #e5e5e6;
-          }
-        }
-      `}</style>
     </div>
   );
 }

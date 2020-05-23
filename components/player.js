@@ -42,8 +42,7 @@ export default function Player({ clips }) {
         ref={audioElement}
         src={audioSrc}
       >
-        Your browser does not support the
-        <code>audio</code> element.
+        Your browser does not support the <code>audio</code> element.
       </audio>
       <p className={styles.clipName}>
         {name} (Ep. {episode})

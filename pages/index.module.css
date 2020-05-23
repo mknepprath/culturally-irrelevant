@@ -18,7 +18,7 @@
 }
 
 .logo {
-  background-color: #a90117;
+  background-color: var(--culturally-irrelevant-red);
   border-radius: 10px;
   height: 288px;
   margin-bottom: 48px;
@@ -28,11 +28,11 @@
   transition: background-color 0.15s ease;
 }
 .logo.dark {
-  background-color: #312971;
+  background-color: var(--culturally-irrelevant-red-dark);
 }
 @media (prefers-color-scheme: dark) {
   .logo {
-    background-color: #312971;
+    background-color: var(--culturally-irrelevant-red-dark);
   }
 }
 .logo:hover,
@@ -55,9 +55,39 @@
   }
 }
 
+.message {
+  background-color: var(--white);
+  box-shadow: 8px 8px 0 var(--black);
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  border: var(--border);
+  border-radius: 10px;
+}
+.message:not(.error) {
+  animation: shake 0.6s;
+  animation-iteration-count: infinite;
+}
+.message.dark {
+  background-color: var(--dark);
+}
+@media (prefers-color-scheme: dark) {
+  .message {
+    background-color: var(--dark);
+  }
+}
+
 .error {
-  background-color: #a90116;
-  color: #ffffff;
+  background-color: var(--culturally-irrelevant-red);
+  color: var(--white);
+}
+.error.dark {
+  background-color: var(--highlight-dark);
+}
+@media (prefers-color-scheme: dark) {
+  .error {
+    background-color: var(--highlight-dark);
+  }
 }
 
 .player {

@@ -2,7 +2,7 @@ import Head from "next/head";
 import classnames from "classnames";
 
 import Form from "../components/form";
-import ButtonLink from "../components/button-link";
+import InternalLink from "../components/internal-link";
 
 import styles from "./recommend.module.css";
 
@@ -17,10 +17,10 @@ export default function Recommend({ theme }) {
       </Head>
 
       <main>
-        <div className={styles.buttonWrapper}>
-          <ButtonLink href="/" isDarkMode={isDarkMode}>
+        <div className={styles.linkWrapper}>
+          <InternalLink href="/" isDarkMode={isDarkMode}>
             Go Home
-          </ButtonLink>
+          </InternalLink>
         </div>
 
         <h1 className="title">Submit a Recommendation</h1>
@@ -36,21 +36,6 @@ export default function Recommend({ theme }) {
       <footer className={classnames({ dark: isDarkMode })}>
         Built with ♥ by Michael Knepprath
       </footer>
-
-      <style jsx global>{`
-        html,
-        body {
-          background-color: ${isDarkMode ? "#1f1a19" : "inherit"};
-          color: ${isDarkMode ? "#E5E5E5" : "inherit"};
-        }
-        @media (prefers-color-scheme: dark) {
-          html,
-          body {
-            background-color: #1f1a19;
-            color: #e5e5e6;
-          }
-        }
-      `}</style>
     </div>
   );
 }

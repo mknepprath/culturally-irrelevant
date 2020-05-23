@@ -28,7 +28,12 @@ export default function Dialog({
         onDismiss={close}
         {...props}
       >
-        <button className={styles.closeDialogButton} onClick={close}>
+        <button
+          className={classnames(styles.closeDialogButton, {
+            [styles.dark]: isDarkMode,
+          })}
+          onClick={close}
+        >
           <VisuallyHidden>Close</VisuallyHidden>
           <span aria-hidden>×</span>
         </button>

@@ -1,8 +1,8 @@
 import classnames from "classnames";
 
-import styles from "./button-link.module.css";
+import styles from "./external-link.module.css";
 
-export default function ButtonLink({
+export default function ExternalLink({
   children,
   className,
   isDarkMode,

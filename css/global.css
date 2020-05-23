@@ -1,9 +1,47 @@
+:root {
+  /* Colors */
+  --black: rgba(0, 0, 0, 1);
+  --black-transparent: rgba(0, 0, 0, 0);
+  --dark: #1f1a19;
+  --highlight: #ffe234;
+  --highlight-dark: #2f294f;
+  --culturally-irrelevant-red: #a90117;
+  --culturally-irrelevant-red-dark: #312971;
+  --overlay: hsla(0, 100%, 100%, 0.9);
+  --overlay-dark: hsla(0, 100%, 0%, 0.9);
+  --white: #ffffff;
+  --white-dark: #e5e5e5;
+
+  /* Design */
+  --border: 4px solid var(--black);
+  --border-red: 4px solid var(--culturally-irrelevant-red);
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html,
+body {
+  background-color: inherit;
+  color: inherit;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+html.dark,
+body.dark {
+  background-color: var(--dark);
+  color: var(--white-dark);
+}
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: var(--dark);
+    color: var(--white-dark);
+  }
 }
 
 main {
@@ -44,10 +82,9 @@ a {
 }
 
 code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
+  background: var(--highlight);
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
 }

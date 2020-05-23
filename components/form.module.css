@@ -14,7 +14,7 @@
 
 .input,
 .textarea {
-  border: 4px solid #000000;
+  border: var(--border);
   border-radius: 10px;
   box-sizing: border-box;
   padding: 8px;
@@ -25,5 +25,5 @@
 }
 .form.dark .input,
 .form.dark .textarea {
-  background-color: #e5e5e5;
+  background-color: var(--white-dark);
 }

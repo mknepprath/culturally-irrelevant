@@ -3,8 +3,8 @@ import classnames from "classnames";
 import useSWR from "swr";
 
 import Button from "../components/button";
-import ButtonLink from "../components/button-link";
 import FloatingActionButton from "../components/fab";
+import InternalLink from "../components/internal-link";
 import Player from "../components/player";
 
 import fetcher from "../libs/fetch";
@@ -25,13 +25,13 @@ export default function Mixtape({ theme }) {
 
       <main>
         <div className={styles.buttonWrapper}>
-          <ButtonLink href="/" isDarkMode={isDarkMode}>
+          <InternalLink href="/" isDarkMode={isDarkMode}>
             Go Home
-          </ButtonLink>
+          </InternalLink>
         </div>
 
         <img
-          className={classnames(styles.ciGang, { dark: isDarkMode })}
+          className={classnames(styles.ciGang, { [styles.dark]: isDarkMode })}
           src="/gang.jpg"
         />
 
@@ -41,6 +41,16 @@ export default function Mixtape({ theme }) {
           The Culturally Irrelevant highlight reel, including recommendations
           and other fun hijinks.
         </p>
+
+        {!clips ? (
+          <div
+            className={classnames(styles.message, {
+              [styles.dark]: isDarkMode,
+            })}
+          >
+            Loading...
+          </div>
+        ) : null}
 
         {clips ? (
           <div className={styles.player}>
@@ -61,21 +71,6 @@ export default function Mixtape({ theme }) {
           {isDarkMode ? "Light Mode" : "Dark Mode"}
         </Button>
       </FloatingActionButton>
-
-      <style jsx global>{`
-        html,
-        body {
-          background-color: ${isDarkMode ? "#1f1a19" : "inherit"};
-          color: ${isDarkMode ? "#E5E5E5" : "inherit"};
-        }
-        @media (prefers-color-scheme: dark) {
-          html,
-          body {
-            background-color: #1f1a19;
-            color: #e5e5e6;
-          }
-        }
-      `}</style>
     </div>
   );
 }

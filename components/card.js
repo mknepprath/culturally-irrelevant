@@ -40,7 +40,6 @@ export default function Card({
           className={styles.audio}
           controls
           controlsList="nodownload"
-          // https://github.com/mknepprath/culturally-irrelevant/issues/3
           // In Safari, clicking the play button also opens the containing link.
           // This prevents event bubbling so that doesn't happen.
           // - It also stops users from clicking the download button, which is...
@@ -48,8 +47,7 @@ export default function Card({
           onClick={(event) => event.preventDefault()}
           src={clip.url}
         >
-          Your browser does not support the
-          <code>audio</code> element.
+          Your browser does not support the <code>audio</code> element.
         </audio>
       ) : null}
 

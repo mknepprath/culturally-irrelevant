@@ -1,9 +1,9 @@
 .link {
-  background-color: #ffffff;
-  border: 4px solid #000000;
+  background-color: var(--white);
+  border: var(--border);
   border-radius: 10px;
-  box-shadow: 8px 8px 0 rgba(0, 0, 0, 1);
-  color: #000000;
+  box-shadow: 8px 8px 0 var(--black);
+  color: var(--black);
   cursor: pointer;
   display: block;
   font-size: 1rem;
@@ -14,35 +14,35 @@
     transform 0.15s ease;
 }
 .link.dark {
-  color: #e5e5e5;
-  background-color: #1f1a19;
+  color: var(--white-dark);
+  background-color: var(--dark);
 }
 @media (prefers-color-scheme: dark) {
   .link {
-    color: #e5e5e5;
-    background-color: #1f1a19;
+    color: var(--white-dark);
+    background-color: var(--dark);
   }
 }
 .link:hover,
 .link:focus,
 .link:active {
-  background-color: #ffe234;
-  box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+  background-color: var(--highlight);
+  box-shadow: 16px 16px 0 var(--black);
   transform: translate(0, -2px);
 }
 .link.dark:hover,
 .link.dark:focus,
 .link.dark:active {
-  background-color: #2f294f;
-  box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+  background-color: var(--highlight-dark);
+  box-shadow: 16px 16px 0 var(--black);
   transform: translate(0, -2px);
 }
 @media (prefers-color-scheme: dark) {
   .link:hover,
   .link:focus,
   .link:active {
-    background-color: #2f294f;
-    box-shadow: 16px 16px 0 rgba(0, 0, 0, 1);
+    background-color: var(--highlight-dark);
+    box-shadow: 16px 16px 0 var(--black);
     transform: translate(0, -2px);
   }
 }

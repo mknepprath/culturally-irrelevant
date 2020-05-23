@@ -10,8 +10,18 @@ function MyApp({ Component, pageProps }) {
   // On app load, get the previously saved theme if there is one.
   React.useEffect(() => setIsDarkMode(getStoredItem(THEME)?.isDarkMode), []);
 
-  // When the theme changes, store it.
-  React.useEffect(() => setStoredItem(THEME, { isDarkMode }), [isDarkMode]);
+  // When the theme changes,
+  React.useEffect(() => {
+    // add `dark` class to the body,
+    const body = document.querySelector("body");
+    if (isDarkMode) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+    // and store it.
+    setStoredItem(THEME, { isDarkMode });
+  }, [isDarkMode]);
 
   return <Component {...pageProps} theme={[isDarkMode, setIsDarkMode]} />;
 }
