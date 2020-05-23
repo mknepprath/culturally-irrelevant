@@ -1,22 +1,29 @@
-// import App from 'next/app'
-
 import "@reach/dialog/styles.css";
+import "../css/global.css";
+
+import { THEME } from "../libs/constants";
+import { getStoredItem, setStoredItem } from "../libs/storage";
 
 function MyApp({ Component, pageProps }) {
-  const theme = React.useState(false);
-  return <Component {...pageProps} theme={theme} />;
-}
+  const [isDarkMode, setIsDarkMode] = React.useState(false);
 
-// Only uncomment this method if you have blocking data requirements for
-// every single page in your application. This disables the ability to
-// perform automatic static optimization, causing every page in your app to
-// be server-side rendered.
-//
-// MyApp.getInitialProps = async (appContext) => {
-//   // calls page's `getInitialProps` and fills `appProps.pageProps`
-//   const appProps = await App.getInitialProps(appContext);
-//
-//   return { ...appProps }
-// }
+  // On app load, get the previously saved theme if there is one.
+  React.useEffect(() => setIsDarkMode(getStoredItem(THEME)?.isDarkMode), []);
+
+  // When the theme changes,
+  React.useEffect(() => {
+    // add `dark` class to the body,
+    const body = document.querySelector("body");
+    if (isDarkMode) {
+      body.classList.add("dark");
+    } else {
+      body.classList.remove("dark");
+    }
+    // and store it.
+    setStoredItem(THEME, { isDarkMode });
+  }, [isDarkMode]);
+
+  return <Component {...pageProps} theme={[isDarkMode, setIsDarkMode]} />;
+}
 
 export default MyApp;

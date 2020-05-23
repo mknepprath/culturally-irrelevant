@@ -1,6 +1,6 @@
 /**
  * Shuffles array in place.
- * @param {Array} array items An array containing the items.
+ * @param {Array} array An array containing the items.
  */
 export default function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {

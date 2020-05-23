@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import styles from "./player.module.css";
+
 const randomIndex = (length) => Math.floor(Math.random() * length);
 
 export default function Player({ clips }) {
@@ -40,17 +42,11 @@ export default function Player({ clips }) {
         ref={audioElement}
         src={audioSrc}
       >
-        Your browser does not support the
-        <code>audio</code> element.
+        Your browser does not support the <code>audio</code> element.
       </audio>
-      <p className="clip-name">
+      <p className={styles.clipName}>
         {name} (Ep. {episode})
       </p>
-      <style jsx>{`
-        .clip-name {
-          text-align: center;
-        }
-      `}</style>
     </>
   );
 }

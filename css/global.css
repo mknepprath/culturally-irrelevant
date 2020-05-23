@@ -1,0 +1,149 @@
+:root {
+  /* Colors */
+  --black: rgba(0, 0, 0, 1);
+  --black-transparent: rgba(0, 0, 0, 0);
+  --dark: #1f1a19;
+  --highlight: #ffe234;
+  --highlight-dark: #2f294f;
+  --culturally-irrelevant-red: #a90117;
+  --culturally-irrelevant-red-dark: #312971;
+  --overlay: hsla(0, 100%, 100%, 0.9);
+  --overlay-dark: hsla(0, 100%, 0%, 0.9);
+  --white: #ffffff;
+  --white-dark: #e5e5e5;
+
+  /* Design */
+  --border: 4px solid var(--black);
+  --border-red: 4px solid var(--culturally-irrelevant-red);
+  --border-radius: 10px;
+  --shadow: 16px 16px 0 var(--black);
+  --translate: translate(0, -2px);
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+html,
+body {
+  background-color: inherit;
+  color: inherit;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+html.dark,
+body.dark {
+  background-color: var(--dark);
+  color: var(--white-dark);
+}
+@media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background-color: var(--dark);
+    color: var(--white-dark);
+  }
+}
+
+main {
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+}
+@media (min-width: 600px) {
+  main {
+    padding: 5rem 0;
+  }
+}
+
+footer {
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+footer.dark {
+  border-top: 1px solid #312725;
+}
+@media (prefers-color-scheme: dark) {
+  footer {
+    border-top: 1px solid #312725;
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+code {
+  background: var(--highlight);
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  min-height: 100vh;
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 600px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 1.6rem;
+}
+@media (min-width: 600px) {
+  .title {
+    font-size: 4rem;
+  }
+}
+
+.title,
+.description {
+  text-align: center;
+}
+
+.description {
+  line-height: 1.2;
+  font-size: 1.2rem;
+}
+@media (min-width: 600px) {
+  .description {
+    line-height: 1.4;
+    font-size: 1.5rem;
+  }
+}
