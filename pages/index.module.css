@@ -6,7 +6,7 @@
 
 @media (min-width: 600px) {
   .recommendLink {
-    display: none;
+    display: none !important;
   }
 }
 .recommendLink {
