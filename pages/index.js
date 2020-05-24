@@ -110,14 +110,16 @@ export default function Home({ theme }) {
               ))}
             </div>
 
-            <Button
-              isDarkMode={isDarkMode}
-              onClick={() =>
-                setNumberOfCards((numberVisible) => numberVisible + 32)
-              }
-            >
-              Load More
-            </Button>
+            {recommendations.length > numberOfCards ? (
+              <Button
+                isDarkMode={isDarkMode}
+                onClick={() =>
+                  setNumberOfCards((numberOfCards) => numberOfCards + 32)
+                }
+              >
+                Load More
+              </Button>
+            ) : null}
           </>
         ) : null}
       </main>
