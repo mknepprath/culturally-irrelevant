@@ -75,42 +75,41 @@
 }
 
 .card .externalLink {
-  opacity: 0;
+  /* mobile styles */
+  box-shadow: 4px 4px 0 var(--black);
+  opacity: 1;
+  right: -8px;
+  transform: rotate(0deg);
+
+  background-color: var(--culturally-irrelevant-red);
+  border: var(--border-red);
+  border-radius: 16px;
+  display: block;
+  font-size: 1.8em;
+  height: 32px;
+  line-height: 24px;
+  position: absolute;
+  text-align: center;
+  top: -8px;
+  width: 32px;
   transition: right 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
 }
 @media (min-width: 600px) {
   .card .externalLink {
-    background-color: var(--culturally-irrelevant-red);
-    border: var(--border-red);
-    border-radius: 16px;
-    display: block;
-    font-size: 1.8em;
-    height: 32px;
-    line-height: 24px;
-    position: absolute;
-    text-align: center;
-    top: -8px;
-    right: 0px;
-    width: 32px;
+    box-shadow: auto;
     opacity: 0;
+    right: 0px;
     transform: rotate(-25deg);
   }
-  .card.dark .externalLink {
-    background-color: var(--culturally-irrelevant-red-dark);
-    border: var(--border);
-    border-radius: 20px;
-    height: 40px;
-    line-height: 30px;
-    width: 40px;
-  }
-  .card:hover .externalLink,
-  .card:focus .externalLink,
-  .card:active .externalLink {
-    box-shadow: var(--shadow);
-    opacity: 1;
-    right: -12px;
-    transform: rotate(0deg);
-  }
+}
+
+.card.dark .externalLink {
+  background-color: var(--culturally-irrelevant-red-dark);
+  border: var(--border);
+  border-radius: 20px;
+  height: 40px;
+  line-height: 30px;
+  width: 40px;
 }
 @media (prefers-color-scheme: dark) {
   .card .externalLink {
@@ -121,6 +120,15 @@
     line-height: 30px;
     width: 40px;
   }
+}
+
+.card:hover .externalLink,
+.card:focus .externalLink,
+.card:active .externalLink {
+  box-shadow: var(--shadow);
+  opacity: 1;
+  right: -12px;
+  transform: rotate(0deg);
 }
 
 .audio {
