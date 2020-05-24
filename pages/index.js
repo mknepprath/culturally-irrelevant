@@ -19,6 +19,8 @@ export default function Home({ theme }) {
   const open = () => setShowDialog(true);
   const close = () => setShowDialog(false);
 
+  const [numberOfCards, setNumberOfCards] = React.useState(16);
+
   const [isDarkMode, setIsDarkMode] = theme;
 
   const { data: recommendations, error } = useSWR(
@@ -91,7 +93,7 @@ export default function Home({ theme }) {
 
         {recommendations && !error ? (
           <div className={styles.grid}>
-            {recommendations.map((rec) => (
+            {recommendations.slice(0, numberOfCards).map((rec) => (
               <Card
                 clip={rec.clip}
                 isDarkMode={isDarkMode}
@@ -107,6 +109,15 @@ export default function Home({ theme }) {
             ))}
           </div>
         ) : null}
+
+        <Button
+          isDarkMode={isDarkMode}
+          onClick={() =>
+            setNumberOfCards((numberVisible) => numberVisible + 16)
+          }
+        >
+          Load More
+        </Button>
       </main>
 
       <footer className={classnames({ dark: isDarkMode })}>

@@ -46,7 +46,7 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
-  margin-top: 3rem;
+  margin: 3rem 0;
 }
 @media (min-width: 600px) {
   .grid {
