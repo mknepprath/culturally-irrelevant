@@ -113,7 +113,7 @@ export default function Home({ theme }) {
             <Button
               isDarkMode={isDarkMode}
               onClick={() =>
-                setNumberOfCards((numberVisible) => numberVisible + 16)
+                setNumberOfCards((numberVisible) => numberVisible + 32)
               }
             >
               Load More
