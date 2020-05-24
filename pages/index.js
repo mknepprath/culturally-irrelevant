@@ -92,32 +92,34 @@ export default function Home({ theme }) {
         ) : null}
 
         {recommendations && !error ? (
-          <div className={styles.grid}>
-            {recommendations.slice(0, numberOfCards).map((rec) => (
-              <Card
-                clip={rec.clip}
-                isDarkMode={isDarkMode}
-                key={rec.id}
-                medium={rec.medium}
-                message={rec.message}
-                name={rec.name}
-                isOfficial={rec.isOfficial}
-                recommendation={rec.recommendation}
-                url={rec.url}
-                year={rec.year}
-              />
-            ))}
-          </div>
-        ) : null}
+          <>
+            <div className={styles.grid}>
+              {recommendations.slice(0, numberOfCards).map((rec) => (
+                <Card
+                  clip={rec.clip}
+                  isDarkMode={isDarkMode}
+                  key={rec.id}
+                  medium={rec.medium}
+                  message={rec.message}
+                  name={rec.name}
+                  isOfficial={rec.isOfficial}
+                  recommendation={rec.recommendation}
+                  url={rec.url}
+                  year={rec.year}
+                />
+              ))}
+            </div>
 
-        <Button
-          isDarkMode={isDarkMode}
-          onClick={() =>
-            setNumberOfCards((numberVisible) => numberVisible + 16)
-          }
-        >
-          Load More
-        </Button>
+            <Button
+              isDarkMode={isDarkMode}
+              onClick={() =>
+                setNumberOfCards((numberVisible) => numberVisible + 16)
+              }
+            >
+              Load More
+            </Button>
+          </>
+        ) : null}
       </main>
 
       <footer className={classnames({ dark: isDarkMode })}>
