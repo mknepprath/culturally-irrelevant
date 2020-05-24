@@ -4,13 +4,13 @@
   }
 }
 
-.recommendLink {
-  display: block;
-}
 @media (min-width: 600px) {
   .recommendLink {
     display: none;
   }
+}
+.recommendLink {
+  display: block;
 }
 
 .h2 {
