@@ -7,6 +7,7 @@ import Button from "../components/button";
 import Card from "../components/card";
 import Dialog from "../components/dialog";
 import FloatingActionButton from "../components/fab";
+import Footer from "../components/footer";
 import Form from "../components/form";
 import InternalLink from "../components/internal-link";
 
@@ -124,9 +125,7 @@ export default function Home({ theme }) {
         ) : null}
       </main>
 
-      <footer className={classnames({ dark: isDarkMode })}>
-        Built with ♥ by Michael Knepprath
-      </footer>
+      <Footer isDarkMode={isDarkMode} />
 
       <Dialog
         aria-label="Form for submitting a recommendation"

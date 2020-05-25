@@ -4,6 +4,7 @@ import useSWR from "swr";
 
 import Button from "../components/button";
 import FloatingActionButton from "../components/fab";
+import Footer from "../components/footer";
 import InternalLink from "../components/internal-link";
 import Player from "../components/player";
 
@@ -59,9 +60,7 @@ export default function Mixtape({ theme }) {
         ) : null}
       </main>
 
-      <footer className={classnames({ dark: isDarkMode })}>
-        Built with ♥ by Michael Knepprath
-      </footer>
+      <Footer isDarkMode={isDarkMode} />
 
       <FloatingActionButton className={styles.darkModeSwitch} top>
         <Button

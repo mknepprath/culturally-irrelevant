@@ -1,6 +1,6 @@
 import Head from "next/head";
-import classnames from "classnames";
 
+import Footer from "../components/footer";
 import Form from "../components/form";
 import InternalLink from "../components/internal-link";
 
@@ -33,9 +33,7 @@ export default function Recommend({ theme }) {
         <Form isDarkMode={isDarkMode} />
       </main>
 
-      <footer className={classnames({ dark: isDarkMode })}>
-        Built with ♥ by Michael Knepprath
-      </footer>
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }

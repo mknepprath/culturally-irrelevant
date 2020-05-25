@@ -1,0 +1,6 @@
+.bullet {
+  color: var(--culturally-irrelevant-red);
+}
+.bullet.dark {
+  color: var(--white-dark);
+}

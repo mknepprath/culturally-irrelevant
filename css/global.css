@@ -68,8 +68,18 @@ footer {
   height: 100px;
   border-top: 1px solid #eaeaea;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+footer p {
+  margin: 0;
+}
+@media (min-width: 600px) {
+  footer {
+    flex-direction: row;
+  }
 }
 footer.dark {
   border-top: 1px solid #312725;
