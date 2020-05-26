@@ -34,6 +34,7 @@ export default function Mixtape({ theme }) {
         </div>
 
         <img
+          alt="Tyler, Ben, Josh, and Dane, the hosts of Culturally Irrelevant"
           className={classnames(styles.ciGang, { [styles.dark]: isDarkMode })}
           src="/gang.jpg"
         />

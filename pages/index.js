@@ -41,6 +41,7 @@ export default function Home({ theme }) {
       <main>
         <Link href="/mixtape">
           <img
+            alt="Culturally Irrelevant logo"
             className={classnames(styles.logo, { [styles.dark]: isDarkMode })}
             src="/logo.png"
           />
