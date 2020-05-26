@@ -49,7 +49,7 @@ export default function Form({ isDarkMode }) {
           <input
             className={styles.input}
             maxLength="48"
-            name="recommendation"
+            id="recommendation"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.recommendation}
@@ -64,7 +64,7 @@ export default function Form({ isDarkMode }) {
           <input
             className={styles.input}
             maxLength="16"
-            name="year"
+            id="year"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.year}
@@ -77,7 +77,7 @@ export default function Form({ isDarkMode }) {
           <input
             className={styles.input}
             maxLength="32"
-            name="medium"
+            id="medium"
             onChange={handleChange}
             onBlur={handleBlur}
             placeholder="Film, Book, Series..."
@@ -91,7 +91,7 @@ export default function Form({ isDarkMode }) {
           <input
             className={styles.input}
             maxLength="32"
-            name="name"
+            id="name"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.name}
@@ -104,7 +104,7 @@ export default function Form({ isDarkMode }) {
           <textarea
             className={styles.textarea}
             maxLength="140"
-            name="message"
+            id="message"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.message}
