@@ -22,6 +22,8 @@ export default function Home({ theme }) {
   const open = () => setShowDialog(true);
   const close = () => setShowDialog(false);
 
+  const [filter, setFilter] = React.useState("");
+
   const [numberOfCards, setNumberOfCards] = React.useState(16);
 
   const [isDarkMode, setIsDarkMode] = theme;
@@ -30,6 +32,15 @@ export default function Home({ theme }) {
     "/api/recommendations",
     fetcher
   );
+
+  const filteredRecommendations = recommendations
+    ? recommendations.filter((rec) =>
+        [rec.name, rec.medium, rec.recommendation, rec.year]
+          .join(" ")
+          .toLowerCase()
+          .includes(filter.toLowerCase())
+      )
+    : [];
 
   return (
     <div className="container">
@@ -63,6 +74,8 @@ export default function Home({ theme }) {
           and whatever else they could come up with.
         </p>
 
+        {/* For learning, teaching, sharing and remembering. */}
+
         <InternalLink href="/mixtape" isDarkMode={isDarkMode}>
           Listen to the Mixtape
         </InternalLink>
@@ -80,7 +93,18 @@ export default function Home({ theme }) {
           Submit a Recommendation
         </InternalLink>
 
-        {/* For learning, teaching, sharing and remembering. */}
+        <div className={styles.filter}>
+          <input
+            className={styles.filterInput}
+            onChange={(event) => setFilter(event.currentTarget.value)}
+            placeholder="Search"
+          />
+          {recommendations.length !== filteredRecommendations.length && (
+            <p className={styles.filterCount}>{`${
+              filteredRecommendations.length
+            } result${filteredRecommendations.length !== 1 ? "s" : ""}`}</p>
+          )}
+        </div>
 
         {error ? (
           <div
@@ -92,7 +116,7 @@ export default function Home({ theme }) {
           </div>
         ) : null}
 
-        {!recommendations && !error ? (
+        {!filteredRecommendations && !error ? (
           <div
             className={classnames(styles.message, {
               [styles.dark]: isDarkMode,
@@ -102,10 +126,10 @@ export default function Home({ theme }) {
           </div>
         ) : null}
 
-        {recommendations && !error ? (
+        {filteredRecommendations && !error ? (
           <>
             <div className={styles.grid}>
-              {recommendations.slice(0, numberOfCards).map((rec) => (
+              {filteredRecommendations.slice(0, numberOfCards).map((rec) => (
                 <Card
                   clip={rec.clip}
                   isDarkMode={isDarkMode}
@@ -121,7 +145,7 @@ export default function Home({ theme }) {
               ))}
             </div>
 
-            {recommendations.length > numberOfCards ? (
+            {filteredRecommendations.length > numberOfCards ? (
               <Button
                 isDarkMode={isDarkMode}
                 onClick={() =>
