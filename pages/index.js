@@ -93,18 +93,20 @@ export default function Home({ theme }) {
           Submit a Recommendation
         </InternalLink>
 
-        <div className={styles.filter}>
-          <input
-            className={styles.filterInput}
-            onChange={(event) => setFilter(event.currentTarget.value)}
-            placeholder="Search"
-          />
-          {recommendations.length !== filteredRecommendations.length && (
-            <p className={styles.filterCount}>{`${
-              filteredRecommendations.length
-            } result${filteredRecommendations.length !== 1 ? "s" : ""}`}</p>
-          )}
-        </div>
+        {recommendations && !error ? (
+          <div className={styles.filter}>
+            <input
+              className={styles.filterInput}
+              onChange={(event) => setFilter(event.currentTarget.value)}
+              placeholder="Search"
+            />
+            {recommendations.length !== filteredRecommendations.length && (
+              <p className={styles.filterCount}>{`${
+                filteredRecommendations.length
+              } result${filteredRecommendations.length !== 1 ? "s" : ""}`}</p>
+            )}
+          </div>
+        ) : null}
 
         {error ? (
           <div
