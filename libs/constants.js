@@ -10,14 +10,11 @@ export const LOADING_MESSAGES = [
   "Debating about superhero movies...",
   "Deploying carrier pigeons...",
   "Dreaming of sushi...",
-  "Formulating recommendations...",
   "Gaining consciousness",
-  "Gathering recommendations...",
   "Having Skype issues...",
   "Importing games...",
   "Inserting LaserDisc...",
   "Leaving rails...",
-  "Loading recommendations...",
   "Mentioning Star Wars...",
   "Predicting Oscar winners...",
   "Reading a book...",
@@ -26,6 +23,13 @@ export const LOADING_MESSAGES = [
   "Snoring...",
   "Turning it off and on again...",
   "Typing at 200wpm...",
+];
+
+export const LOADING_RECOMMENDATIONS = [
+  "Formulating recommendations...",
+  "Gathering recommendations...",
+  "Loading recommendations...",
+  ...LOADING_MESSAGES,
 ];
 
 // localStorage key

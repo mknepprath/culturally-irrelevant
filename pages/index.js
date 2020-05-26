@@ -11,7 +11,7 @@ import Footer from "../components/footer";
 import Form from "../components/form";
 import InternalLink from "../components/internal-link";
 
-import { LOADING_MESSAGES } from "../libs/constants";
+import { LOADING_RECOMMENDATIONS } from "../libs/constants";
 import fetcher from "../libs/fetch";
 import shuffle from "../libs/shuffle";
 
@@ -98,7 +98,7 @@ export default function Home({ theme }) {
               [styles.dark]: isDarkMode,
             })}
           >
-            {shuffle(LOADING_MESSAGES)[0]}
+            {shuffle(LOADING_RECOMMENDATIONS)[0]}
           </div>
         ) : null}
 
