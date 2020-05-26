@@ -8,7 +8,9 @@ import Footer from "../components/footer";
 import InternalLink from "../components/internal-link";
 import Player from "../components/player";
 
+import { LOADING_MESSAGES } from "../libs/constants";
 import fetcher from "../libs/fetch";
+import shuffle from "../libs/shuffle";
 
 import styles from "./mixtape.module.css";
 
@@ -49,7 +51,7 @@ export default function Mixtape({ theme }) {
               [styles.dark]: isDarkMode,
             })}
           >
-            Loading...
+            {shuffle(LOADING_MESSAGES)[0]}
           </div>
         ) : null}
 

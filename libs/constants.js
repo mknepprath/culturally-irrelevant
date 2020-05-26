@@ -1,1 +1,31 @@
+export const LOADING_MESSAGES = [
+  "Assembling Avengers...",
+  "Awkward silence...",
+  "Becoming a walrus...",
+  "Blowing on the cartridge...",
+  "Booting up Sega Genesis...",
+  "Browsing Netflix...",
+  "Checking audio levels...",
+  "Debating about superhero movies...",
+  "Deploying carrier pigeons...",
+  "Dreaming of sushi...",
+  "Formulating recommendations...",
+  "Gaining consciousness",
+  "Gathering recommendations...",
+  "Having Skype issues...",
+  "Importing games...",
+  "Inserting LaserDisc...",
+  "Leaving rails...",
+  "Loading recommendations...",
+  "Mentioning Star Wars...",
+  "Predicting Oscar winners...",
+  "Reading a book...",
+  "Rewatching The Shining...",
+  "Scrambling to pick topics...",
+  "Snoring...",
+  "Turning it off and on again...",
+  "Typing at 200wpm...",
+];
+
+// localStorage key
 export const THEME = "theme";
