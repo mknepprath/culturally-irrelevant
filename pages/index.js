@@ -108,6 +108,7 @@ export default function Home({ theme }) {
             className={classnames(styles.message, {
               [styles.dark]: isDarkMode,
             })}
+            suppressHydrationWarning
           >
             {shuffle(LOADING_RECOMMENDATIONS)[0]}
           </div>

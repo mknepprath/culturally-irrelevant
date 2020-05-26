@@ -56,6 +56,7 @@ export default function Mixtape({ theme }) {
             className={classnames(styles.message, {
               [styles.dark]: isDarkMode,
             })}
+            suppressHydrationWarning
           >
             {shuffle(LOADING_MESSAGES)[0]}
           </div>
