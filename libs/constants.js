@@ -6,6 +6,7 @@ export const LOADING_MESSAGES = [
   "Booting up Sega Genesis...",
   "Browsing Netflix...",
   "Checking audio levels...",
+  "Dancing in the dark...",
   "Debating about superhero movies...",
   "Deploying carrier pigeons...",
   "Dreaming of sushi...",
