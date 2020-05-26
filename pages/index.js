@@ -93,21 +93,6 @@ export default function Home({ theme }) {
           Submit a Recommendation
         </InternalLink>
 
-        {recommendations && !error ? (
-          <div className={styles.filter}>
-            <input
-              className={styles.filterInput}
-              onChange={(event) => setFilter(event.currentTarget.value)}
-              placeholder="Search"
-            />
-            {recommendations.length !== filteredRecommendations.length && (
-              <p className={styles.filterCount}>{`${
-                filteredRecommendations.length
-              } result${filteredRecommendations.length !== 1 ? "s" : ""}`}</p>
-            )}
-          </div>
-        ) : null}
-
         {error ? (
           <div
             className={classnames(styles.message, styles.error, {
@@ -118,7 +103,7 @@ export default function Home({ theme }) {
           </div>
         ) : null}
 
-        {!filteredRecommendations && !error ? (
+        {!recommendations && !error ? (
           <div
             className={classnames(styles.message, {
               [styles.dark]: isDarkMode,
@@ -128,8 +113,21 @@ export default function Home({ theme }) {
           </div>
         ) : null}
 
-        {filteredRecommendations && !error ? (
+        {recommendations && !error ? (
           <>
+            <div className={styles.filter}>
+              <input
+                className={styles.filterInput}
+                onChange={(event) => setFilter(event.currentTarget.value)}
+                placeholder="Search"
+              />
+              {recommendations.length !== filteredRecommendations.length && (
+                <p className={styles.filterCount}>{`${
+                  filteredRecommendations.length
+                } result${filteredRecommendations.length !== 1 ? "s" : ""}`}</p>
+              )}
+            </div>
+
             <div className={styles.grid}>
               {filteredRecommendations.slice(0, numberOfCards).map((rec) => (
                 <Card
