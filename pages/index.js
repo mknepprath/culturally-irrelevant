@@ -10,9 +10,11 @@ import FloatingActionButton from "../components/fab";
 import Footer from "../components/footer";
 import Form from "../components/form";
 import InternalLink from "../components/internal-link";
+import SearchBar from "../components/search-bar";
 
 import { LOADING_RECOMMENDATIONS } from "../libs/constants";
 import fetcher from "../libs/fetch";
+import filterRecommendations from "../libs/filter";
 import shuffle from "../libs/shuffle";
 
 import styles from "./index.module.css";
@@ -22,36 +24,19 @@ export default function Home({ theme }) {
   const open = () => setShowDialog(true);
   const close = () => setShowDialog(false);
 
-  const [filter, setFilter] = React.useState("");
-
   const [numberOfCards, setNumberOfCards] = React.useState(16);
 
   const [isDarkMode, setIsDarkMode] = theme;
 
+  const [filter, setFilter] = React.useState("");
   const { data: recommendations, error } = useSWR(
     "/api/recommendations",
     fetcher
   );
-
-  // Splitting the user-inputted search and filtering based on that. For example:
-  // Searching `ben 2016 film` will result in all recommendations that include `ben`,
-  // `2016`, and `film`.
-  const filteredRecommendations = recommendations
-    ? recommendations.filter((
-        rec // {name: "Ben", medium: "Film", recommendation: "The Wailing", year: 2016}
-      ) =>
-        filter // "Ben 2016 film"
-          .toLowerCase() // => "ben 2016 film"
-          .split(" ") // => ["ben", "2016", "film"]
-          .every(
-            (filterSegment) =>
-              [rec.name, rec.medium, rec.recommendation, rec.year] // => ["Ben", "Film", "The Wailing", 2016]
-                .join(" ") // => "Ben Film The Wailing 2016"
-                .toLowerCase() // => "ben film the wailing 2016"
-                .includes(filterSegment) // Does the above string include every value in ["ben", "2016", "film"]?
-          )
-      )
-    : [];
+  const filteredRecommendations = filterRecommendations(
+    filter,
+    recommendations
+  );
 
   return (
     <div className="container">
@@ -127,35 +112,40 @@ export default function Home({ theme }) {
 
         {recommendations && !error ? (
           <>
-            <div className={styles.filter}>
-              <input
-                className={styles.filterInput}
-                onChange={(event) => setFilter(event.currentTarget.value)}
-                placeholder="Search"
-              />
-              {recommendations.length !== filteredRecommendations.length && (
-                <p className={styles.filterCount}>{`${
-                  filteredRecommendations.length
-                } result${filteredRecommendations.length !== 1 ? "s" : ""}`}</p>
-              )}
-            </div>
+            <SearchBar
+              className={styles.filter}
+              filter={filter}
+              filteredRecommendations={filteredRecommendations}
+              recommendations={recommendations}
+              setFilter={setFilter}
+            />
 
-            <div className={styles.grid}>
-              {filteredRecommendations.slice(0, numberOfCards).map((rec) => (
-                <Card
-                  clip={rec.clip}
-                  isDarkMode={isDarkMode}
-                  key={rec.id}
-                  medium={rec.medium}
-                  message={rec.message}
-                  name={rec.name}
-                  isOfficial={rec.isOfficial}
-                  recommendation={rec.recommendation}
-                  url={rec.url}
-                  year={rec.year}
-                />
-              ))}
-            </div>
+            {filteredRecommendations.length > 0 ? (
+              <div className={styles.grid}>
+                {filteredRecommendations.slice(0, numberOfCards).map((rec) => (
+                  <Card
+                    clip={rec.clip}
+                    isDarkMode={isDarkMode}
+                    key={rec.id}
+                    medium={rec.medium}
+                    message={rec.message}
+                    name={rec.name}
+                    isOfficial={rec.isOfficial}
+                    recommendation={rec.recommendation}
+                    url={rec.url}
+                    year={rec.year}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div
+                className={classnames(styles.message, {
+                  [styles.dark]: isDarkMode,
+                })}
+              >
+                No results match this search
+              </div>
+            )}
 
             {filteredRecommendations.length > numberOfCards ? (
               <Button

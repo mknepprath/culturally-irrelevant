@@ -33,5 +33,39 @@ export const LOADING_RECOMMENDATIONS = [
   ...LOADING_MESSAGES,
 ];
 
+export const PLACEHOLDER_EXAMPLES = [
+  "1975",
+  "2000 film",
+  "2007",
+  "2008 book",
+  "2015",
+  "ben 2017 series",
+  "bread game",
+  "comic",
+  "film 2000",
+  "film festival",
+  "last broadcast",
+  "meat train",
+  "michael 2016",
+  "mister mosquito",
+  "superfight",
+  "the lobster",
+  "typing of the dead",
+  "Barry Lyndon",
+  "Book",
+  "Comic",
+  "Dane book",
+  "Danganronpa",
+  "Film",
+  "Game",
+  "Grabbers film",
+  "Josh Wierschke",
+  "Series",
+  "Song of the Sea",
+  "Tokyo game",
+  "Trollhunter",
+  "Tyler Film 2016",
+];
+
 // localStorage key
 export const THEME = "theme";
