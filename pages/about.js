@@ -61,7 +61,34 @@ export default function About({ theme }) {
         <p className="description">
           {`We are Culturally Irrelevant, a now-defunct podcast hosted by four friends
           who shared overlooked goodies in pop culture with each other
-          and our listeners${recommendationString}.`}
+          and our listeners${recommendationString}`}
+          {recommendations ? (
+            "."
+          ) : (
+            <>
+              <span
+                className={classnames(styles.dot1, {
+                  [styles.dark]: isDarkMode,
+                })}
+              >
+                .
+              </span>
+              <span
+                className={classnames(styles.dot2, {
+                  [styles.dark]: isDarkMode,
+                })}
+              >
+                .
+              </span>
+              <span
+                className={classnames(styles.dot3, {
+                  [styles.dark]: isDarkMode,
+                })}
+              >
+                .
+              </span>
+            </>
+          )}
         </p>
 
         <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
