@@ -15,13 +15,31 @@
 .highlightPurple {
   background: var(--culturally-irrelevant-red-dark);
   border-radius: 8px;
+  display: none;
   padding: 0px 6px 4px;
+}
+.highlightPurple.dark {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  .highlightPurple {
+    display: inline;
+  }
 }
 .highlightRed {
   background: var(--culturally-irrelevant-red);
   border-radius: 8px;
   color: var(--white);
+  display: inline;
   padding: 2px 6px;
+}
+.highlightRed.dark {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  .highlightRed {
+    display: none;
+  }
 }
 
 @media (min-width: 600px) {

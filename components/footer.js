@@ -7,7 +7,11 @@ export default function Footer({ className, isDarkMode, ...props }) {
   return (
     <footer className={classnames({ dark: isDarkMode }, className)} {...props}>
       <p>
-        <a href="https://mknepprath.com" target="_blank">
+        <a
+          href="https://mknepprath.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           Built with ♥ by Michael Knepprath
         </a>
       </p>

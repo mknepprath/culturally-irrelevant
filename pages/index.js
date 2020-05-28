@@ -80,11 +80,20 @@ export default function Home({ theme }) {
           The podcast may be over but we still have plenty to share.
           Recommendations made on the Culturally Irrelevant podcast are
           highlighted in{" "}
-          {isDarkMode ? (
-            <span className={styles.highlightPurple}>purple</span>
-          ) : (
-            <span className={styles.highlightRed}>red</span>
-          )}{" "}
+          <span
+            className={classnames(styles.highlightPurple, {
+              [styles.dark]: isDarkMode,
+            })}
+          >
+            purple
+          </span>
+          <span
+            className={classnames(styles.highlightRed, {
+              [styles.dark]: isDarkMode,
+            })}
+          >
+            red
+          </span>{" "}
           below. If you have a recommendation to share, please do! We'd love to
           check it out.
         </p>

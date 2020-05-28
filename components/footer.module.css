@@ -8,3 +8,12 @@
 .link.dark:hover {
   color: var(--white);
 }
+@media (prefers-color-scheme: dark) {
+  .link {
+    color: var(--white-dark);
+    text-decoration: underline;
+  }
+  .link:hover {
+    color: var(--white);
+  }
+}

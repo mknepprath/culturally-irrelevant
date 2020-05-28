@@ -58,6 +58,13 @@
 .dot3.dark {
   color: var(--white-dark);
 }
+@media (prefers-color-scheme: dark) {
+  .dot1,
+  .dot2,
+  .dot3 {
+    color: var(--white-dark);
+  }
+}
 .dot1 {
   animation: shake 1s;
   animation-iteration-count: infinite;
@@ -108,6 +115,15 @@
 }
 .link.dark:hover {
   color: var(--white);
+}
+@media (prefers-color-scheme: dark) {
+  .link {
+    color: var(--white-dark);
+    text-decoration: underline;
+  }
+  .link:hover {
+    color: var(--white);
+  }
 }
 
 @keyframes shake {
