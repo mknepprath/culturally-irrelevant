@@ -77,12 +77,20 @@ export default function Home({ theme }) {
         </InternalLink>
 
         <p className="description">
-          The podcast may be over but we still have plenty to share. Please
-          share your recommendations with us, as well!
+          The podcast may be over but we still have plenty to share.
+          Recommendations made on the Culturally Irrelevant podcast are
+          highlighted in{" "}
+          {isDarkMode ? (
+            <span className={styles.highlightPurple}>purple</span>
+          ) : (
+            <span className={styles.highlightRed}>red</span>
+          )}{" "}
+          below. If you have a recommendation to share, please do! We'd love to
+          check it out.
         </p>
 
         <InternalLink
-          className={styles.recommendLink}
+          className={styles.mobileRecommendLink}
           href="/recommend"
           isDarkMode={isDarkMode}
         >

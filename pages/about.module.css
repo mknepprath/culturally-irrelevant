@@ -1,0 +1,87 @@
+@media (prefers-color-scheme: dark) {
+  .darkModeSwitch {
+    display: none;
+  }
+}
+
+.message {
+  background-color: var(--white);
+  border: var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  color: inherit;
+  margin-top: 3rem;
+  padding: 1.5rem;
+  text-align: left;
+}
+.message:not(.error) {
+  animation: shake 0.6s;
+  animation-iteration-count: infinite;
+}
+.message.dark {
+  background-color: var(--dark);
+}
+@media (prefers-color-scheme: dark) {
+  .message {
+    background-color: var(--dark);
+  }
+}
+
+.buttonWrapper {
+  margin-bottom: 24px;
+  max-width: 240px;
+  width: 100%;
+}
+
+.ciGang {
+  border-radius: var(--border-radius);
+  margin-bottom: 24px;
+  width: 100%;
+}
+.ciGang.dark {
+  filter: grayscale(95%);
+}
+@media (prefers-color-scheme: dark) {
+  .ciGang {
+    filter: grayscale(95%);
+  }
+}
+
+.hr {
+  border: 2px solid var(--culturally-irrelevant-red);
+  border-radius: var(--border-radius);
+  width: 30%;
+}
+.hr.dark {
+  border: 2px solid var(--white-dark);
+}
+@media (prefers-color-scheme: dark) {
+  .hr {
+    border: 2px solid var(--white-dark);
+  }
+}
+
+.dane {
+  border-radius: var(--border-radius);
+  max-width: 300px;
+  width: 70%;
+}
+.dane.dark {
+  filter: grayscale(95%);
+}
+@media (prefers-color-scheme: dark) {
+  .dane {
+    filter: grayscale(95%);
+  }
+}
+
+.link {
+  color: var(--culturally-irrelevant-red);
+}
+.link.dark {
+  color: var(--white-dark);
+  text-decoration: underline;
+}
+.link.dark:hover {
+  color: var(--white);
+}

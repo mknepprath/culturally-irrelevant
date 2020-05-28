@@ -1,12 +1,9 @@
 import { PLACEHOLDER_EXAMPLES } from "../libs/constants";
 import useInterval from "../libs/interval";
+import randomInteger from "../libs/random-integer";
 import shuffle from "../libs/shuffle";
 
 import styles from "./search-bar.module.css";
-
-function randomInteger(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 
 export default function SearchBar({
   className,
@@ -49,8 +46,10 @@ export default function SearchBar({
 
   return (
     <div className={className} {...props}>
+      <label htmlFor="search" />
       <input
         className={styles.input}
+        id="search"
         onChange={(event) => setFilter(event.currentTarget.value)}
         placeholder={placeholder.text.slice(0, placeholder.index)}
       />

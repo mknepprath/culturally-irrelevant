@@ -1,6 +1,10 @@
-.bullet {
+.link {
   color: var(--culturally-irrelevant-red);
 }
-.bullet.dark {
+.link.dark {
   color: var(--white-dark);
+  text-decoration: underline;
+}
+.link.dark:hover {
+  color: var(--white);
 }

@@ -47,8 +47,25 @@ export default function Mixtape({ theme }) {
         <h1 className="title">The Irrelevant Mixtape</h1>
 
         <p className="description">
-          The Culturally Irrelevant highlight reel, including recommendations
-          and other fun hijinks.
+          Hit play to listen to highlights from the Culturally Irrelevant
+          podcast, including recommendations and other fun hijinks. A special
+          thanks to{" "}
+          <a
+            href="https://roccow.bandcamp.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            RoccoW
+          </a>{" "}
+          for providing our{" "}
+          <a
+            href="https://soundcloud.com/roccow/break-a-leg"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            theme music
+          </a>
+          .
         </p>
 
         {!clips ? (
