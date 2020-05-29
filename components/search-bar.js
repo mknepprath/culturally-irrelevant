@@ -14,10 +14,10 @@ export default function SearchBar({
   ...props
 }) {
   const [placeholder, setPlaceholder] = React.useState({
-    index: 6,
-    text: "Search...",
+    index: 0,
+    text: "...",
   });
-  const [delay, setDelay] = React.useState(6000);
+  const [delay, setDelay] = React.useState(2000);
 
   useInterval(
     () => {
@@ -46,7 +46,7 @@ export default function SearchBar({
 
   return (
     <div className={className} {...props}>
-      <label htmlFor="search" />
+      <label htmlFor="search">Search</label>
       <input
         className={styles.input}
         id="search"
