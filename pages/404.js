@@ -1,6 +1,7 @@
 import Link from "next/link";
-import randomInteger from "../libs/random-integer";
 import useSWR from "swr";
+
+import randomInteger from "../libs/random-integer";
 
 import fetcher from "../libs/fetch";
 import styles from "./404.module.css";
@@ -35,7 +36,11 @@ export default function Custom404() {
             Have you checked out <a href={rec.url}>{rec.recommendation}</a> yet?
           </p>
         ) : (
-          <p>...</p>
+          <>
+            <span className={styles.dot1}>.</span>
+            <span className={styles.dot2}>.</span>
+            <span className={styles.dot3}>.</span>
+          </>
         )}
       </div>
     </>
