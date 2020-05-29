@@ -1,0 +1,29 @@
+.content {
+  background-color: var(--culturally-irrelevant-red);
+  border-radius: var(--border-radius);
+  bottom: 40px;
+  box-shadow: var(--shadow-2x);
+  color: var(--white);
+  padding: 1.5rem;
+  position: absolute;
+  right: 40px;
+}
+
+.content h1 {
+  margin-top: 0px;
+}
+
+.content p {
+  margin: 0;
+}
+
+.content a {
+  text-decoration: underline;
+}
+
+.error {
+  cursor: pointer;
+  height: 100vh;
+  object-fit: cover;
+  width: 100%;
+}
