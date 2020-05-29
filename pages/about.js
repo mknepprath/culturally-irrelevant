@@ -91,6 +91,17 @@ export default function About({ theme }) {
           )}
         </p>
 
+        <InternalLink href="/mixtape" isDarkMode={isDarkMode}>
+          Listen to the Mixtape
+        </InternalLink>
+
+        <p className="description">
+          In a typical episode, each host brought one movie or video game or
+          comic book, etc, and gave a spoiler-free overview of it. At the end of
+          the episode, the gang debated about which of them brought the most
+          irrelevant topic, and which brought the most relevant.
+        </p>
+
         <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
 
         <p className="description">

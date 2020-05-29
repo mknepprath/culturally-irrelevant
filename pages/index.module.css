@@ -43,9 +43,16 @@
 }
 
 @media (min-width: 600px) {
+  .desktopRecommendLink {
+    display: block !important;
+  }
   .mobileRecommendLink {
     display: none !important;
   }
+}
+.desktopRecommendLink {
+  display: none;
+  margin-bottom: 2rem;
 }
 .mobileRecommendLink {
   display: block;
@@ -74,9 +81,7 @@
     background-color: var(--culturally-irrelevant-red-dark);
   }
 }
-.logo:hover,
-.logo:focus,
-.logo:active {
+.logo:hover {
   animation: shake 0.2s;
   animation-iteration-count: infinite;
 }

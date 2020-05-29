@@ -53,7 +53,7 @@ export default function Home({ theme }) {
       </Head>
 
       <main>
-        <Link href="/mixtape">
+        <Link href="/about">
           <img
             alt="Culturally Irrelevant logo"
             className={classnames(styles.logo, { [styles.dark]: isDarkMode })}
@@ -67,19 +67,8 @@ export default function Home({ theme }) {
           Hello and welcome to Culturally Irrelevant! This website is based on a
           podcast where four friends shared and discussed the unseen, unplayed,
           unread, and all-around overlooked in movies, video games, comic books
-          and whatever else they could come up with.
-        </p>
-
-        {/* For learning, teaching, sharing and remembering. */}
-
-        <InternalLink href="/mixtape" isDarkMode={isDarkMode}>
-          Listen to the Mixtape
-        </InternalLink>
-
-        <p className="description">
-          The podcast may be over but we still have plenty to share.
-          Recommendations made on the Culturally Irrelevant podcast are
-          highlighted in{" "}
+          and whatever else they could come up with. All of the recommendations
+          made on the Culturally Irrelevant podcast are highlighted in{" "}
           <span
             className={classnames(styles.highlightPurple, {
               [styles.dark]: isDarkMode,
@@ -94,9 +83,28 @@ export default function Home({ theme }) {
           >
             red
           </span>{" "}
-          below. If you have a recommendation to share, please do! We'd love to
-          check it out.
+          below.
         </p>
+
+        {/* For learning, teaching, sharing and remembering. */}
+
+        <InternalLink href="/about" isDarkMode={isDarkMode}>
+          About the Podcast
+        </InternalLink>
+
+        <p className="description">
+          The podcast may be over but we still want to give you a platform for
+          sharing your favorite overlooked goodies in pop culture. If you have a
+          recommendation to share, please do! We'd love to check it out.
+        </p>
+
+        <Button
+          className={styles.desktopRecommendLink}
+          isDarkMode={isDarkMode}
+          onClick={open}
+        >
+          Submit a Recommendation
+        </Button>
 
         <InternalLink
           className={styles.mobileRecommendLink}
