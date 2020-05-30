@@ -1,12 +1,13 @@
 .content {
   background-color: var(--culturally-irrelevant-red);
   border-radius: var(--border-radius);
-  bottom: 40px;
+  bottom: 20px;
   box-shadow: var(--shadow-2x);
   color: var(--white);
+  margin: 20px;
   padding: 1.5rem;
   position: absolute;
-  right: 40px;
+  right: 20px;
 }
 
 .content h1 {
