@@ -1,3 +1,10 @@
+const tags = {
+  Book: ["books", "novel"],
+  Comic: ["comics", "graphic", "novel"],
+  Film: ["films", "movie", "movies", "video"],
+  Series: ["television", "tv", "show", "shows"],
+};
+
 export default function filterRecommendations(filter, recommendations) {
   if (!recommendations) return [];
   // Split the user-inputted search and filtering based on that. For example:
@@ -11,7 +18,13 @@ export default function filterRecommendations(filter, recommendations) {
       .split(" ") // => ["ben", "2016", "film"]
       .every(
         (filterSegment) =>
-          [rec.name, rec.medium, rec.recommendation, rec.year] // => ["Ben", "Film", "The Wailing", 2016]
+          [
+            rec.name,
+            rec.medium,
+            rec.recommendation,
+            rec.year,
+            ...(tags[rec.medium] || []),
+          ] // => ["Ben", "Film", "The Wailing", 2016]
             .join(" ") // => "Ben Film The Wailing 2016"
             .toLowerCase() // => "ben film the wailing 2016"
             .includes(filterSegment) // Does the above string include every value in ["ben", "2016", "film"]?
