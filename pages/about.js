@@ -34,7 +34,6 @@ export default function About({ theme }) {
     <div className="container">
       <Head>
         <title>Culturally Irrelevant - About the Irrelevant Podcast</title>
-        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="Culturally Irrelevant is a now-defunct podcast hosted by four friends
@@ -101,6 +100,98 @@ export default function About({ theme }) {
           the episode, the gang debated about which of them brought the most
           irrelevant topic, and which brought the most relevant.
         </p>
+
+        <div className={styles.grid}>
+          <div className={styles.gridItem}>
+            <img
+              alt="Dane"
+              className={classnames(styles.dane, { [styles.dark]: isDarkMode })}
+              src="/tyler.jpg"
+            />
+            <p className="description">
+              <b>
+                <a
+                  href="https://twitter.com/NerdAtWar"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Tyler Driscoll
+                </a>
+              </b>
+              <br />
+              Born in the cold of Michigan and shown Star Wars by his father;
+              Tyler developed into a full-blown nerd. Star Wars, Marvel, and
+              cinema galore. I'm Tyler.
+            </p>
+          </div>
+
+          <div className={styles.gridItem}>
+            <img
+              alt="Dane"
+              className={classnames(styles.dane, { [styles.dark]: isDarkMode })}
+              src="/ben.jpg"
+            />
+            <p className="description">
+              <b>
+                <a
+                  href="https://twitter.com/benlundsten"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Ben Lundsten
+                </a>
+              </b>
+              <br />A father of two future superheroes and a victim of male
+              pattern baldness. His specialties are Halo 1 and films you've
+              never heard of.
+            </p>
+          </div>
+
+          <div className={styles.gridItem}>
+            <img
+              alt="Dane"
+              className={classnames(styles.dane, { [styles.dark]: isDarkMode })}
+              src="/josh.jpg"
+            />
+            <p className="description">
+              <b>
+                <a
+                  href="https://twitter.com/JoshWWhat"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Josh Wierschke
+                </a>
+              </b>
+              <br />
+              Your friendly neighborhood Josh has been reading comics since
+              before he could… well, read. But this nerd won't be put in a box.
+            </p>
+          </div>
+
+          <div className={styles.gridItem}>
+            <img
+              alt="Dane"
+              className={classnames(styles.dane, { [styles.dark]: isDarkMode })}
+              src="/dane.jpg"
+            />
+            <p className="description">
+              <b>
+                <a
+                  href="http://thirstycatcollection.blogspot.com/"
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Dane Christenson
+                </a>
+              </b>
+              <br />
+              An unapologetic Sega fanboy from WI who always roots for the
+              underdog, making him the most irrelevant of the bunch. P.S.
+              Stanley Kubrick.
+            </p>
+          </div>
+        </div>
 
         <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
 

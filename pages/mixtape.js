@@ -23,7 +23,6 @@ export default function Mixtape({ theme }) {
     <div className="container">
       <Head>
         <title>Culturally Irrelevant - The Irrelevant Mixtape</title>
-        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="The Culturally Irrelevant highlight reel, including recommendations

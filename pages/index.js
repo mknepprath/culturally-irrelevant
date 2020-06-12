@@ -42,7 +42,6 @@ export default function Home({ theme }) {
     <div className="container">
       <Head>
         <title>Culturally Irrelevant - Recommendations Board</title>
-        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="Hello and welcome to Culturally Irrelevant! This website is based on a
