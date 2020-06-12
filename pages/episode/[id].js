@@ -20,6 +20,7 @@ export default function Episode() {
         <title>
           #{data.episode} - {data.name}
         </title>
+        <meta property="og:title" content={`#${data.episode} - ${data.name}`} />
       </Head>
       <audio controls src={data.audio.url}>
         Your browser does not support the <code>audio</code> element.

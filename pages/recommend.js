@@ -18,6 +18,10 @@ export default function Recommend({ theme }) {
           content="Please share your favorite unseen, unplayed, unread, and all-around
           overlooked in movies, video games, comic books, etc!"
         />
+        <meta
+          property="og:title"
+          content="Culturally Irrelevant - Submit a Recommendation"
+        />
       </Head>
 
       <main>

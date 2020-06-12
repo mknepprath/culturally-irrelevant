@@ -28,6 +28,10 @@ export default function Mixtape({ theme }) {
           content="The Culturally Irrelevant highlight reel, including recommendations
           and other fun hijinks."
         />
+        <meta
+          property="og:title"
+          content="Culturally Irrelevant - The Irrelevant Mixtape"
+        />
       </Head>
 
       <main>

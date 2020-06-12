@@ -40,6 +40,10 @@ export default function About({ theme }) {
           who brought overlooked goodies in pop culture to share with each other
           and their listeners."
         />
+        <meta
+          property="og:title"
+          content="Culturally Irrelevant - About the Irrelevant Podcast"
+        />
       </Head>
 
       <main>

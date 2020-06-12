@@ -34,6 +34,10 @@ export default function Player({ clips }) {
         <title>
           The Irrelevant Mixtape - {name} (Ep. {episode})
         </title>
+        <meta
+          property="og:title"
+          content={`The Irrelevant Mixtape - ${name} (Ep. ${episode})`}
+        />
       </Head>
       <audio
         controls

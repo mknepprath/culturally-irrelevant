@@ -49,6 +49,10 @@ export default function Home({ theme }) {
           unread, and all-around overlooked in movies, video games, comic books
           and whatever else they could come up with."
         />
+        <meta
+          property="og:title"
+          content="Culturally Irrelevant - Recommendations Board"
+        />
       </Head>
 
       <main>
