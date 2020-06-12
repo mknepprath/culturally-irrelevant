@@ -18,7 +18,11 @@ export default class MyDocument extends Document {
       <html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:image" content={`${BASE_URL}/og-image.jpg`} />
           <meta property="og:image" content={`${BASE_URL}/og-image.jpg`} />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="627" />
         </Head>
         <body>
           <Main />
