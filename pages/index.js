@@ -42,13 +42,16 @@ export default function Home({ theme }) {
     <div className="container">
       <Head>
         <title>Culturally Irrelevant - Recommendations Board</title>
-        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="Hello and welcome to Culturally Irrelevant! This website is based on a
           podcast where four friends shared and discussed the unseen, unplayed,
           unread, and all-around overlooked in movies, video games, comic books
           and whatever else they could come up with."
+        />
+        <meta
+          property="og:title"
+          content="Culturally Irrelevant - Recommendations Board"
         />
       </Head>
 

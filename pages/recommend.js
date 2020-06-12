@@ -13,11 +13,14 @@ export default function Recommend({ theme }) {
     <div className="container">
       <Head>
         <title>Culturally Irrelevant - Submit a Recommendation</title>
-        <link rel="icon" href="/favicon.ico" />
         <meta
           name="description"
           content="Please share your favorite unseen, unplayed, unread, and all-around
           overlooked in movies, video games, comic books, etc!"
+        />
+        <meta
+          property="og:title"
+          content="Culturally Irrelevant - Submit a Recommendation"
         />
       </Head>
 
