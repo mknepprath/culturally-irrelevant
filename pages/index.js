@@ -15,6 +15,7 @@ import SearchBar from "../components/search-bar";
 import { LOADING_RECOMMENDATIONS } from "../libs/constants";
 import fetcher from "../libs/fetch";
 import filterRecommendations from "../libs/filter";
+import randomInteger from "../libs/random-integer";
 import shuffle from "../libs/shuffle";
 
 import styles from "./index.module.css";
@@ -33,10 +34,10 @@ export default function Home({ theme }) {
     "/api/recommendations",
     fetcher
   );
-  const filteredRecommendations = filterRecommendations(
-    filter,
-    recommendations
-  );
+  const filteredRecommendations =
+    filter.toLowerCase() === "surprise me"
+      ? [recommendations[randomInteger(0, recommendations.length - 1)]]
+      : filterRecommendations(filter, recommendations);
 
   return (
     <div className="container">
