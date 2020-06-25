@@ -71,28 +71,16 @@ export default function Home({ theme }) {
           Hello and welcome to Culturally Irrelevant! This website is based on a
           podcast where four friends shared and discussed the unseen, unplayed,
           unread, and all-around overlooked in movies, video games, comic books
-          and whatever else they could come up with. All of the recommendations
-          made on the Culturally Irrelevant podcast are highlighted in{" "}
-          <span
-            className={classnames(styles.highlightPurple, {
-              [styles.dark]: isDarkMode,
-            })}
-          >
-            purple
-          </span>
-          <span
-            className={classnames(styles.highlightRed, {
-              [styles.dark]: isDarkMode,
-            })}
-          >
-            red
-          </span>{" "}
-          below.
+          and whatever else they could come up with.
         </p>
 
         {/* For learning, teaching, sharing and remembering. */}
 
-        <InternalLink href="/about" isDarkMode={isDarkMode}>
+        <InternalLink
+          className={styles.aboutLink}
+          href="/about"
+          isDarkMode={isDarkMode}
+        >
           About the Podcast
         </InternalLink>
 
@@ -117,6 +105,26 @@ export default function Home({ theme }) {
         >
           Submit a Recommendation
         </InternalLink>
+
+        <p className="description">
+          All of the recommendations made on the Culturally Irrelevant podcast
+          are highlighted in{" "}
+          <span
+            className={classnames(styles.highlightPurple, {
+              [styles.dark]: isDarkMode,
+            })}
+          >
+            purple
+          </span>
+          <span
+            className={classnames(styles.highlightRed, {
+              [styles.dark]: isDarkMode,
+            })}
+          >
+            red
+          </span>{" "}
+          below.
+        </p>
 
         {error ? (
           <div
