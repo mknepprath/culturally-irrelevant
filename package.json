@@ -12,7 +12,7 @@
     "@reach/visually-hidden": "^0.10.4",
     "airtable": "^0.8.1",
     "classnames": "^2.2.6",
-    "formik": "^2.1.4",
+    "formik": "^2.1.5",
     "isomorphic-unfetch": "^3.0.0",
     "next": "9.4.4",
     "react": "16.13.1",
