@@ -14,7 +14,7 @@
     "classnames": "^2.2.6",
     "formik": "^2.1.6",
     "isomorphic-unfetch": "^3.1.0",
-    "next": "9.5.4",
+    "next": "9.5.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "swr": "^0.3.5"
