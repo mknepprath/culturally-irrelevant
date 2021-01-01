@@ -1,5 +1,6 @@
 {
   "env": {
-    "AIRTABLE_ACCESS_KEY": "@airtable-access-key"
+    "AIRTABLE_ACCESS_KEY": "@airtable-access-key",
+    "SLACK_TOKEN": "@slack-token"
   }
 }

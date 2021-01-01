@@ -18,6 +18,10 @@ export default function Form({ isDarkMode }) {
         message: "",
       }}
       onSubmit={(values, { resetForm, setSubmitting }) => {
+        fetch("api/slack", {
+          method: "POST",
+          body: JSON.stringify(values),
+        })
         fetch("api/recommendation", {
           method: "POST",
           body: JSON.stringify(values),
