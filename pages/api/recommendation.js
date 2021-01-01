@@ -14,11 +14,11 @@ export default async (req, res) => {
     [
       {
         fields: {
-          Alert: {
-            id: "usrHPjzq5pfF12oRM",
-            email: "mknepprath@gmail.com",
-            name: "Michael Knepprath",
-          },
+          // Alert: {
+          //   id: "usrHPjzq5pfF12oRM",
+          //   email: "mknepprath@gmail.com",
+          //   name: "Michael Knepprath",
+          // },
           Medium: body.medium,
           Message: body.message,
           Name: body.name,

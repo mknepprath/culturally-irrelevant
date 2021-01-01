@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 const BASE_URL =
   process.env.NODE_ENV === "development"
@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       // This is the reason this file was added - to set the `lang` attribute.
-      <html lang="en">
+      <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta name="twitter:card" content="summary_large_image" />
@@ -28,7 +28,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
