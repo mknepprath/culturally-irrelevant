@@ -35,7 +35,7 @@ export default function Mixtape({ theme }) {
       </Head>
 
       <main>
-        <div className={styles.buttonWrapper}>
+        <div className={styles.buttonWrapper} data-cy="mixtape-page">
           <InternalLink href="/" isDarkMode={isDarkMode}>
             Go Home
           </InternalLink>

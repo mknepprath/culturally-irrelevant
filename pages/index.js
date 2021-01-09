@@ -40,7 +40,7 @@ export default function Home({ theme }) {
       : filterRecommendations(filter, recommendations);
 
   return (
-    <div className="container">
+    <div className="container" data-cy="home-page">
       <Head>
         <title>Culturally Irrelevant - Recommendations Board</title>
         <meta
@@ -78,6 +78,7 @@ export default function Home({ theme }) {
 
         <InternalLink
           className={styles.aboutLink}
+          cypressAttr="about-link"
           href="/about"
           isDarkMode={isDarkMode}
         >
@@ -158,7 +159,7 @@ export default function Home({ theme }) {
             />
 
             {filteredRecommendations.length > 0 ? (
-              <div className={styles.grid}>
+              <div className={styles.grid} data-cy="home-grid">
                 {filteredRecommendations.slice(0, numberOfCards).map((rec) => (
                   <Card
                     clip={rec.clip}

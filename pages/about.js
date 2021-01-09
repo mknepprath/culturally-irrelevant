@@ -31,7 +31,7 @@ export default function About({ theme }) {
     : "";
 
   return (
-    <div className="container">
+    <div className="container" data-cy="about-page">
       <Head>
         <title>Culturally Irrelevant - About the Irrelevant Podcast</title>
         <meta
@@ -94,7 +94,7 @@ export default function About({ theme }) {
           )}
         </p>
 
-        <InternalLink href="/mixtape" isDarkMode={isDarkMode}>
+        <InternalLink cypressAttr="mixtape-link" href="/mixtape" isDarkMode={isDarkMode}>
           Listen to the Mixtape
         </InternalLink>
 

@@ -10,7 +10,7 @@ export default function Recommend({ theme }) {
   const [isDarkMode] = theme;
 
   return (
-    <div className="container">
+    <div className="container" data-cy="recommend-page">
       <Head>
         <title>Culturally Irrelevant - Submit a Recommendation</title>
         <meta
