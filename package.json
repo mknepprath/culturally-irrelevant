@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "test": "npm run cypress:run",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "dependencies": {
     "@reach/dialog": "^0.12.1",
@@ -18,5 +21,8 @@
     "react": "16.14.0",
     "react-dom": "16.14.0",
     "swr": "^0.3.11"
+  },
+  "devDependencies": {
+    "cypress": "^6.2.1"
   }
 }

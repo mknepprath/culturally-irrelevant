@@ -29,7 +29,7 @@ export default function Custom404() {
         />
       </Link>
 
-      <div className={styles.content}>
+      <div className={styles.content} data-cy="404-page">
         <h1>404 - Page Not Found</h1>
         {rec ? (
           <p>
