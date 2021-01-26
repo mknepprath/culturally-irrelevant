@@ -11,7 +11,7 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
-    "@reach/dialog": "^0.12.1",
+    "@reach/dialog": "^0.13.0",
     "@reach/visually-hidden": "^0.12.0",
     "airtable": "^0.10.1",
     "classnames": "^2.2.6",
