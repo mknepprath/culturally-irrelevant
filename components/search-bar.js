@@ -1,3 +1,5 @@
+import React from "react";
+
 import { PLACEHOLDER_EXAMPLES } from "../libs/constants";
 import useInterval from "../libs/interval";
 import randomInteger from "../libs/random-integer";
