@@ -23,6 +23,6 @@
     "swr": "^0.4.2"
   },
   "devDependencies": {
-    "cypress": "^6.5.0"
+    "cypress": "^6.6.0"
   }
 }
