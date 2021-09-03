@@ -2,12 +2,14 @@ import Head from "next/head";
 import classnames from "classnames";
 
 import Button from "../components/button";
+import ExternalLink from "../components/external-link";
 import FloatingActionButton from "../components/fab";
 import InternalLink from "../components/internal-link";
 
 import ButtonGuide from "../components/guidebook/button";
 import CardGuide from "../components/guidebook/card";
 import DarkModeGuide from "../components/guidebook/dark-mode";
+import InlineLoaderGuide from "../components/guidebook/inline-loader";
 import InternalLinkGuide from "../components/guidebook/internal-link";
 import LoaderGuide from "../components/guidebook/loader";
 import SearchBarGuide from "../components/guidebook/search-bar";
@@ -67,6 +69,10 @@ export default function Guidebook({ theme }) {
 
         <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
 
+        <InlineLoaderGuide />
+
+        <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
+
         <InternalLinkGuide />
 
         <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
@@ -75,14 +81,31 @@ export default function Guidebook({ theme }) {
 
         <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
 
+        <h2>404 Page</h2>
         <p>
-          Be sure to check out the 404 page to see the random recommendation
-          displayed there:
+          My favorite part of this page is that it also includes a dynamic
+          random recommendation. Sort of to say, sorry about that! Here's a
+          little treat. Clicking anywhere on the page takes you home.
         </p>
 
-        <InternalLink href="/404">404 page</InternalLink>
+        <InternalLink href="/404" isDarkMode={isDarkMode}>
+          404 page
+        </InternalLink>
 
-        <p>Thanks for visiting Culturally Irrelevant! 😄</p>
+        <hr className={classnames(styles.hr, { [styles.dark]: isDarkMode })} />
+
+        <p>
+          Thanks for visiting Culturally Irrelevant! If you have suggestions,
+          please open an issue on GitHub. 😄
+        </p>
+        <ExternalLink
+          href="https://github.com/mknepprath/culturally-irrelevant/issues"
+          rel="noopener noreferrer"
+          target="_blank"
+          isDarkMode={isDarkMode}
+        >
+          GitHub Issues
+        </ExternalLink>
         <p>- Michael</p>
       </main>
 

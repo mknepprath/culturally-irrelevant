@@ -17,7 +17,7 @@ function DarkModeGuide({ children }) {
         activation of dark mode on non-iOS devices.
         <br />
         The implementation of Dark Mode was very purposeful, and not necessarily
-        a 1:1 color-swap. This is especially obvious for the red/purple cards
+        a 1:1 color-swap. This is especially clear for the red/purple cards
         which gain an outline in dark mode. The outline is added around the link
         arrow, as well.
       </p>

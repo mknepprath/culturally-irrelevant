@@ -16,9 +16,9 @@ function SearchBarGuide() {
 
       <p>
         The search bar includes suggestions for visitors to the site. I can
-        match based on a number of parameters, which may not be obvious.
-        Offering hints makes it clear how flexible visitors can be with their
-        queries.
+        match based on a number of parameters, which may not be obvious to
+        visitors. Offering hints makes it clear how flexible visitors can be
+        with their queries.
       </p>
 
       <SearchBar
