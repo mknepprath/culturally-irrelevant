@@ -1,0 +1,26 @@
+@media (prefers-color-scheme: dark) {
+  .darkModeSwitch {
+    display: none;
+  }
+}
+
+.buttonWrapper {
+  margin-bottom: 36px;
+  max-width: 240px;
+  width: 100%;
+}
+
+.hr {
+  border: 2px solid var(--culturally-irrelevant-red);
+  border-radius: var(--border-radius);
+  width: 30%;
+  margin: 3rem 0 1rem;
+}
+.hr.dark {
+  border: 2px solid var(--white-dark);
+}
+@media (prefers-color-scheme: dark) {
+  .hr {
+    border: 2px solid var(--white-dark);
+  }
+}
