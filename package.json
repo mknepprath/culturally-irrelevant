@@ -23,6 +23,6 @@
     "swr": "^1.0.1"
   },
   "devDependencies": {
-    "cypress": "^9.0.0"
+    "cypress": "^9.1.0"
   }
 }
