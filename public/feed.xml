@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
 <channel>
-<title>Culturally Irrelevant</title> <link>https://www.apple.com/itunes/podcasts/</link>
+<title>Culturally Irrelevant</title> <link>https://www.culturallyirrelevant.com/</link>
 <language>en-us</language>
 <copyright>© 2022 Michael Knepprath</copyright>
 <itunes:author>Michael Knepprath</itunes:author>
 <description> A podcast where four friends shared and discussed the unseen, unplayed, unread, and all-around overlooked in movies, video games, comic books and whatever else they could come up with.
 </description>
-<itunes:type>serial</itunes:type>
+<itunes:type>episodic</itunes:type>
 <itunes:owner> <itunes:name>Culturally Irrelevant</itunes:name>
 <itunes:email>mknepprath@gmail.com</itunes:email>
 </itunes:owner>
@@ -18,7 +18,6 @@ href="https://www.culturallyirrelevant.com/podcast-art.png"
 <itunes:category text="Books"/> </itunes:category>
 <itunes:explicit>false</itunes:explicit>
 <item>
-<itunes:episodeType>trailer</itunes:episodeType>
 <itunes:title>I Gotta Go Back To Wisconsin</itunes:title>
 <description>
 <content:encoded>
