@@ -217,10 +217,10 @@ const titles = [
 ];
 
 export default ({ query: { id } }, res) => {
-  console.log(`${process.env.S3_BUCKET}/${id}.mp3`);
+  console.log(`${process.env.NEXT_PUBLIC_S3_BUCKET}/${id}.mp3`);
   res.status(200).json({
     audio: {
-      url: `${process.env.S3_BUCKET}/${id}.mp3`,
+      url: `${process.env.NEXT_PUBLIC_S3_BUCKET}/${id}.mp3`,
     },
     episode: `${titles[id - 1].episode}`,
     name: `${titles[id - 1].title}`,

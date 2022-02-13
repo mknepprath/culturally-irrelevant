@@ -18,7 +18,7 @@ href="https://www.culturallyirrelevant.com/podcast-art.png"
 <itunes:category text="Books"/> </itunes:category>
 <itunes:explicit>false</itunes:explicit>
 <item>
-		<title>Episode #362 &#8211; Dungeons &#038; Dragons, with Adam Rex</title>
+		<title>#1 &#8211; I Gotta Go Back To Wisconsin</title>
 		<link>https://www.flophousepodcast.com/2022/02/episode-362-dungeons-dragons-with-adam-rex/</link>
 
 		<dc:creator><![CDATA[flophouse]]></dc:creator>
@@ -50,7 +50,7 @@ href="https://www.culturallyirrelevant.com/podcast-art.png"
 
 
 
-<p>Download the MP3 directly, <a href="https://cdn.simplecast.com/audio/fd7fc5f6-2d39-4a19-a56f-c31910966c15/episodes/b52b8be2-56cc-49f8-bb88-b8090b9292c6/audio/191c56b6-643e-40a6-af7f-e6e4a8b4781c/default_tc.mp3">HERE</a>.</p>
+<p>Download the MP3 directly, <a href="https://culturallyirrelevant.s3.us-east-2.amazonaws.com/episodes/1.mp3">HERE</a>.</p>
 
 
 
@@ -86,7 +86,7 @@ href="https://www.culturallyirrelevant.com/podcast-art.png"
 ]]></content:encoded>
 
 
-		<enclosure url="https://cdn.simplecast.com/audio/fd7fc5f6-2d39-4a19-a56f-c31910966c15/episodes/b52b8be2-56cc-49f8-bb88-b8090b9292c6/audio/191c56b6-643e-40a6-af7f-e6e4a8b4781c/default_tc.mp3" length="131321241" type="audio/mpeg" />
+		<enclosure url="https://culturallyirrelevant.s3.us-east-2.amazonaws.com/episodes/1.mp3" length="131321241" type="audio/mpeg" />
 
 			</item>
 </channel>
