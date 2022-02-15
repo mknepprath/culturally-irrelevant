@@ -22,7 +22,6 @@ export default function Episode({ theme }) {
   );
 
   if (error) return <div>{error.message}</div>;
-  if (recError) return <div>{recError.message}</div>;
   if (!data) return <div>Loading...</div>;
 
   return (
