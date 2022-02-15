@@ -2,7 +2,7 @@ import Airtable from "airtable";
 
 Airtable.configure({
   endpointUrl: "https://api.airtable.com",
-  apiKey: process.env.AIRTABLE_ACCESS_KEY,
+  apiKey: process.env.NEXT_PUBLIC_AIRTABLE_ACCESS_KEY,
 });
 
 export default async (req, res) => {
@@ -31,7 +31,7 @@ export default async (req, res) => {
   }
 
   await fetch(
-    `https://hooks.slack.com/services/T0259ER7T/B01HV93RB5Z/${process.env.SLACK_TOKEN}`,
+    `https://hooks.slack.com/services/T0259ER7T/B01HV93RB5Z/${process.env.NEXT_PUBLIC_SLACK_TOKEN}`,
     {
       method: "POST",
       body: JSON.stringify({

@@ -53,7 +53,7 @@ export default function Card({
 
       <p>
         {message && `"${message}"`}
-        <em> - {name}</em>
+        {name && <em> - {name}</em>}
       </p>
 
       {url && <span className={styles.externalLink}>↗</span>}
