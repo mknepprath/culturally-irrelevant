@@ -18,11 +18,13 @@ export default function Episode({ theme }) {
     fetcher
   );
   const episodeRecommendations = recommendations?.filter(
-    (rec) => rec.episode === query.id
+    (rec) => rec.episode === data?.episode
   );
 
   if (error) return <div>{error.message}</div>;
   if (!data) return <div>Loading...</div>;
+
+  console.log(episodeRecommendations);
 
   return (
     <div className="container">
@@ -50,7 +52,7 @@ export default function Episode({ theme }) {
               key={rec.id}
               medium={rec.medium}
               message={rec.message}
-              name={rec.name}
+              name={`${rec.name} ${rec.winner ? "🏆" : ""}`}
               isOfficial={rec.isOfficial}
               recommendation={rec.recommendation}
               url={rec.url}

@@ -37,6 +37,7 @@ export default async (req, res) => {
           const isOfficial = record.get("Official");
           const recommendation = record.get("Recommendation");
           const url = record.get("URL");
+          const winner = record.get("Winner");
           const year = record.get("Year");
           posts.unshift({
             id: record.id,
@@ -48,6 +49,7 @@ export default async (req, res) => {
             isOfficial,
             recommendation,
             url,
+            winner,
             year,
           });
         });
