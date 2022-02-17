@@ -38,7 +38,7 @@ export default (_, res) => {
       <description><![CDATA[Episode ${data.episode}...]]></description>
       <content:encoded><![CDATA[<p>More details: <a href="https://www.culturallyirrelevant.com/episode/${
         index + 1
-      }">https://www.culturallyirrelevant.com/episode/${
+      }">https://culturallyirrelevant.com/episode/${
       index + 1
     }</a></p>]]></content:encoded>
       <enclosure url="https://culturallyirrelevant.s3.us-east-2.amazonaws.com/episodes/${
