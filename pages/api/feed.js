@@ -26,7 +26,7 @@ export default (_, res) => {
     (data, index) => `
     <item>
       <title>#${data.episode} &#8211; ${data.title}</title>
-      <link>https://www.culturallyirrelevant.com/</link>
+      <link>https://www.culturallyirrelevant.com/episode/${index + 1}</link>
 
       <dc:creator><![CDATA[culturallyirrelevant]]></dc:creator>
       <pubDate>${data.publish_date}</pubDate>
@@ -36,7 +36,11 @@ export default (_, res) => {
       }</guid>
 
       <description><![CDATA[Episode ${data.episode}...]]></description>
-      <content:encoded><![CDATA[<p>Encoded content</p>]]></content:encoded>
+      <content:encoded><![CDATA[<p>More details: <a href="https://www.culturallyirrelevant.com/episode/${
+        index + 1
+      }">https://www.culturallyirrelevant.com/episode/${
+      index + 1
+    }</a></p>]]></content:encoded>
       <enclosure url="https://culturallyirrelevant.s3.us-east-2.amazonaws.com/episodes/${
         index + 1
       }.mp3" length="131321241" type="audio/mpeg" />
