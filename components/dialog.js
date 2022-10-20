@@ -1,9 +1,10 @@
 import classnames from "classnames";
+
 import {
   Dialog as ReachDialog,
   DialogOverlay as ReachDialogOverlay,
 } from "@reach/dialog";
-import VisuallyHidden from "@reach/visually-hidden";
+import { VisuallyHidden } from "@reach/visually-hidden";
 
 import styles from "./dialog.module.css";
 
