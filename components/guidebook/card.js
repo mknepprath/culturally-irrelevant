@@ -25,13 +25,13 @@ function CardGuide() {
       <Card
         clip={hasClip ? "/blip-theme.mp3" : null}
         isDarkMode={isDarkMode}
-        medium="Platform"
-        message="I <3 Twitter!"
+        medium="Streaming Service"
+        message="I <3 Netflix!"
         name="Michael Knepprath"
         isOfficial={isOfficial}
-        recommendation="Twitter"
-        url={isOfficial ? "https://twitter.com/mknepprath" : null}
-        year="2006"
+        recommendation="Netflix"
+        url={isOfficial ? "https://mknepprath.com" : null}
+        year="1997"
       />
 
       <form
