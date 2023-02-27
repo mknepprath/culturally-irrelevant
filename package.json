@@ -20,7 +20,7 @@
     "next": "12.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "swr": "^2.0.3"
+    "swr": "^2.0.4"
   },
   "devDependencies": {
     "cypress": "^12.7.0"
