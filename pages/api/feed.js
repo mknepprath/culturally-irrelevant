@@ -25,7 +25,7 @@ export default (_, res) => {
   ${EPISODES.map(
     (data, index) => `
     <item>
-      <title>#${data.episode} &#8211; ${data.title}</title>
+      <title>#${data.episode} &#8211; ${data.title.replace("&", "&#38;")}</title>
       <link>https://www.culturallyirrelevant.com/episode/${index + 1}</link>
 
       <dc:creator><![CDATA[culturallyirrelevant]]></dc:creator>
