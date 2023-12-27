@@ -14,7 +14,7 @@
     "@reach/dialog": "^0.18.0",
     "@reach/visually-hidden": "^0.18.0",
     "airtable": "^0.12.2",
-    "classnames": "^2.3.3",
+    "classnames": "^2.4.0",
     "formik": "^2.4.5",
     "isomorphic-unfetch": "^4.0.2",
     "next": "12.3.1",
