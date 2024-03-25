@@ -2,7 +2,7 @@ import Airtable from "airtable";
 
 Airtable.configure({
   endpointUrl: "https://api.airtable.com",
-  apiKey: process.env.NEXT_PUBLIC_AIRTABLE_ACCESS_KEY,
+  apiKey: process.env.AIRTABLE_ACCESS_TOKEN,
 });
 
 export default async (req, res) => {
