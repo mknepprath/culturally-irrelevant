@@ -15,7 +15,7 @@
     "@reach/visually-hidden": "^0.18.0",
     "airtable": "^0.12.2",
     "classnames": "^2.5.1",
-    "formik": "^2.4.5",
+    "formik": "^2.4.6",
     "isomorphic-unfetch": "^4.0.2",
     "next": "13.5.1",
     "react": "18.3.1",
@@ -23,6 +23,6 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
-    "cypress": "^13.7.1"
+    "cypress": "^13.14.0"
   }
 }
