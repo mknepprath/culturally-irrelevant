@@ -94,7 +94,7 @@ export default function About({ theme }) {
           )}
         </p>
 
-        <InternalLink cypressAttr="mixtape-link" href="/mixtape" isDarkMode={isDarkMode}>
+        <InternalLink cypressattr="mixtape-link" href="/mixtape" isDarkMode={isDarkMode}>
           Listen to the Mixtape
         </InternalLink>
 

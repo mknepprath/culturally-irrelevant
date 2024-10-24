@@ -16,7 +16,7 @@ export default function InternalLink({
             { [styles.dark]: isDarkMode },
             className
         )}
-        data-cy={props.cypressAttr}
+        data-cy={props.cypressattr}
         {...props}
     >
         {children}
