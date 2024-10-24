@@ -11,15 +11,15 @@
     "cypress:run": "cypress run"
   },
   "dependencies": {
-    "@reach/dialog": "^0.18.0",
-    "@reach/visually-hidden": "^0.18.0",
     "airtable": "^0.12.2",
     "classnames": "^2.5.1",
     "formik": "^2.4.6",
     "isomorphic-unfetch": "^4.0.2",
-    "next": "12.3.1",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "next": "14.2.10",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-focus-lock": "^2.13.2",
+    "react-remove-scroll": "^2.6.0",
     "swr": "^2.2.5"
   },
   "devDependencies": {

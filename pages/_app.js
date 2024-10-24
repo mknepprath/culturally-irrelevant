@@ -1,6 +1,5 @@
 import React from "react";
 
-import "@reach/dialog/styles.css";
 import "../css/global.css";
 
 import { THEME } from "../libs/constants";

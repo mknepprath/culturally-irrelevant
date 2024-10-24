@@ -10,17 +10,16 @@ export default function InternalLink({
   ...props
 }) {
   return (
-    <Link {...props}>
-      <a
+    <Link
         className={classnames(
-          styles.link,
-          { [styles.dark]: isDarkMode },
-          className
+            styles.link,
+            { [styles.dark]: isDarkMode },
+            className
         )}
-        data-cy={props.cypressAttr}
-      >
+        data-cy={props.cypressattr}
+        {...props}
+    >
         {children}
-      </a>
     </Link>
   );
 }

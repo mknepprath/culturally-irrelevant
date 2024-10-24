@@ -18,7 +18,7 @@ export default function Footer({ className, isDarkMode, ...props }) {
       <p>&nbsp;&bull;&nbsp;</p>
       <p className={classnames(styles.link, { [styles.dark]: isDarkMode })}>
         <Link href="/about">
-          <a>In Memory of Dane Christenson</a>
+          In Memory of Dane Christenson
         </Link>
       </p>
     </footer>

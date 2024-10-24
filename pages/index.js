@@ -79,7 +79,7 @@ export default function Home({ theme }) {
 
         <InternalLink
           className={styles.aboutLink}
-          cypressAttr="about-link"
+          cypressattr="about-link"
           href="/about"
           isDarkMode={isDarkMode}
         >
