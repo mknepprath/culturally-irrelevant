@@ -19,7 +19,7 @@
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-focus-lock": "^2.13.5",
-    "react-remove-scroll": "^2.6.2",
+    "react-remove-scroll": "^2.6.3",
     "swr": "^2.3.0"
   },
   "devDependencies": {
