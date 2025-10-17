@@ -15,7 +15,7 @@
     "classnames": "^2.5.1",
     "formik": "^2.4.6",
     "isomorphic-unfetch": "^4.0.2",
-    "next": "15.5.5",
+    "next": "15.5.6",
     "react": "^19.1.0",
     "react-dom": "^19.2.0",
     "react-focus-lock": "^2.13.6",
