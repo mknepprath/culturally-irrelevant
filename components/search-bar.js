@@ -56,11 +56,17 @@ export default function SearchBar({
         placeholder={placeholder.text.slice(0, placeholder.index)}
       />
 
-      {recommendations.length !== filteredRecommendations.length && (
-        <p className={styles.count}>{`${filteredRecommendations.length} result${
-          filteredRecommendations.length !== 1 ? "s" : ""
-        }`}</p>
-      )}
+      <p
+        className={styles.count}
+        style={{
+          visibility:
+            recommendations.length !== filteredRecommendations.length
+              ? "visible"
+              : "hidden",
+        }}
+      >{`${filteredRecommendations.length} result${
+        filteredRecommendations.length !== 1 ? "s" : ""
+      }`}</p>
     </div>
   );
 }
