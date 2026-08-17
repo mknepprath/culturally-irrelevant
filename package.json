@@ -20,7 +20,7 @@
     "react-dom": "^19.2.8",
     "react-focus-lock": "^2.13.7",
     "react-remove-scroll": "^2.7.2",
-    "swr": "^2.5.0"
+    "swr": "^2.5.1"
   },
   "devDependencies": {
     "cypress": "^15.20.1"
