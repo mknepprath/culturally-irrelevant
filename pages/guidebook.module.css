@@ -5,6 +5,7 @@
 }
 
 .buttonWrapper {
+  align-self: flex-start;
   margin-bottom: 36px;
   max-width: 240px;
   width: 100%;
