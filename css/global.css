@@ -12,6 +12,15 @@
   --white: #ffffff;
   --white-dark: #e5e5e5;
 
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+
   /* Design */
   --border: 4px solid var(--black);
   --border-red: 4px solid var(--culturally-irrelevant-red);
@@ -49,17 +58,19 @@ body.dark {
 }
 
 main {
-  padding: 4rem 0;
+  padding: var(--spacing-2xl) 0;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   max-width: 800px;
+  gap: var(--spacing-lg);
 }
 @media (min-width: 600px) {
   main {
-    padding: 5rem 0;
+    padding: var(--spacing-3xl) 0;
+    gap: var(--spacing-xl);
   }
 }
 
@@ -182,3 +193,15 @@ code {
   padding: 2rem;
   outline: none;
 }
+
+/* Spacing utilities */
+.spacing-xs { margin-bottom: var(--spacing-xs); }
+.spacing-sm { margin-bottom: var(--spacing-sm); }
+.spacing-md { margin-bottom: var(--spacing-md); }
+.spacing-lg { margin-bottom: var(--spacing-lg); }
+.spacing-xl { margin-bottom: var(--spacing-xl); }
+.spacing-2xl { margin-bottom: var(--spacing-2xl); }
+.spacing-3xl { margin-bottom: var(--spacing-3xl); }
+
+.section-spacing { margin-bottom: var(--spacing-2xl); }
+.section-spacing:last-child { margin-bottom: 0; }

@@ -40,6 +40,7 @@ export default function Card({
           className={styles.audio}
           controls
           controlsList="nodownload"
+          preload="none"
           // In Safari, clicking the play button also opens the containing link.
           // This prevents event bubbling so that doesn't happen.
           // - It also stops users from clicking the download button, which is...

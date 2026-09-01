@@ -18,6 +18,16 @@ export default function Form({ isDarkMode }) {
         medium: "",
         message: "",
       }}
+      validateOnMount
+      validate={(values) => {
+        const errors = {};
+        if (!values.recommendation.trim())
+          errors.recommendation = "Please enter a recommendation.";
+        if (!values.year.trim()) errors.year = "Please enter a year.";
+        if (!values.medium.trim()) errors.medium = "Please enter a medium.";
+        if (!values.name.trim()) errors.name = "Please enter your name.";
+        return errors;
+      }}
       onSubmit={(values, { resetForm, setSubmitting }) => {
         fetch("api/slack", {
           method: "POST",
@@ -43,6 +53,7 @@ export default function Form({ isDarkMode }) {
         handleBlur,
         handleSubmit,
         isSubmitting,
+        isValid,
       }) => (
         <form
           className={classnames(styles.form, { [styles.dark]: isDarkMode })}
@@ -116,7 +127,11 @@ export default function Form({ isDarkMode }) {
           />
           {errors.message && touched.message && errors.message}
 
-          <Button disabled={isSubmitting} isDarkMode={isDarkMode} type="submit">
+          <Button
+            disabled={isSubmitting || !isValid}
+            isDarkMode={isDarkMode}
+            type="submit"
+          >
             Submit
           </Button>
           <p>{successMessage}</p>

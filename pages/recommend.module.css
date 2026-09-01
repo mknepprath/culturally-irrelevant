@@ -1,4 +1,5 @@
 .linkWrapper {
+  align-self: flex-start;
   margin-bottom: 24px;
   max-width: 240px;
   width: 100%;
